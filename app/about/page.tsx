@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
 const values = ["Integrity", "Confidentiality", "Empowerment", "Excellence", "Fairness"];
@@ -17,8 +18,9 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-about.jpg" />
+        <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
           <p className="eyebrow">About Us</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black text-white max-w-2xl">

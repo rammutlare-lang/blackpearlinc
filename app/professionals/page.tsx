@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
 export default async function ProfessionalsPage({
@@ -30,8 +31,9 @@ export default async function ProfessionalsPage({
 
   return (
     <div>
-      <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-professionals.jpg" />
+        <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Professionals" }]} />
           <p className="eyebrow">Meet Our Vetted Professionals</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">

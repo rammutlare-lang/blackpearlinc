@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
 const steps = [
@@ -30,8 +31,9 @@ export default async function HowItWorksPage() {
 
   return (
     <div>
-      <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10 items-center">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-how-it-works.jpg" />
+        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10 items-center relative z-10">
           <div>
             <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} />
             <p className="eyebrow">How It Works</p>

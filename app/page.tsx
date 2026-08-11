@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/ui/Button";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
 const heroTrust = [
@@ -37,8 +38,9 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden diagonal-accent">
-        <div className="container-page py-16 md:py-20 grid lg:grid-cols-[1fr_420px] gap-10 items-start relative">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-home.jpg" />
+        <div className="container-page py-16 md:py-20 grid lg:grid-cols-[1fr_420px] gap-10 items-start relative z-10">
           <div>
             <p className="eyebrow">Expert Advice. Fair Solutions.</p>
             <h1 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight text-white">

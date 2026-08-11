@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
 const heroTrust = ["Vetted Professionals", "Confidential & Secure", "Easy Booking & Payments", "Practical Solutions"];
@@ -25,8 +26,9 @@ export default async function ServicesPage() {
 
   return (
     <div>
-      <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-services.jpg" />
+        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10 relative z-10">
           <div>
             <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
             <h1 className="mt-4 text-4xl md:text-5xl font-black text-white">

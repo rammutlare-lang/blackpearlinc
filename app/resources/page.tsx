@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 import { resourceCategoryLabels, type ResourceCategory } from "@/lib/enums";
 
@@ -28,8 +29,9 @@ export default async function ResourcesPage({
 
   return (
     <div>
-      <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16">
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-resources.jpg" />
+        <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Resources" }]} />
           <p className="eyebrow">Resources</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">

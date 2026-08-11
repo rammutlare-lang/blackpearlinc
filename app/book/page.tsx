@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HeroBackground } from "@/components/HeroBackground";
 import { Input } from "@/components/ui/Input";
 
 type Service = { id: string; slug: string; name: string; defaultPriceCents: number };
@@ -143,14 +144,20 @@ function BookWizard() {
   }
 
   return (
-    <div className="container-page py-12 max-w-4xl">
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Book Consultation" }]} />
-      <p className="eyebrow">Book Your Consultation</p>
-      <h1 className="mt-1 text-3xl md:text-4xl font-black text-tw-ink">
-        Schedule a Confidential Consultation
-      </h1>
+    <div>
+      <section className="bg-tw-black relative overflow-hidden">
+        <HeroBackground src="/images/hero-book.jpg" />
+        <div className="container-page py-16 relative z-10">
+          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Book Consultation" }]} />
+          <p className="eyebrow">Book Your Consultation</p>
+          <h1 className="mt-1 text-3xl md:text-4xl font-black text-white">
+            Schedule a Confidential Consultation
+          </h1>
+        </div>
+      </section>
 
-      <div className="mt-6 flex flex-wrap gap-4">
+      <div className="container-page py-12 max-w-4xl">
+      <div className="mt-0 flex flex-wrap gap-4">
         {steps.map((label, i) => (
           <div key={label} className="flex items-center gap-2">
             <span
@@ -400,6 +407,7 @@ function BookWizard() {
       <p className="mt-6 text-xs text-tw-muted">
         Need help choosing? <ButtonLink href="/contact" variant="outline-red" size="sm">Contact Us</ButtonLink>
       </p>
+      </div>
     </div>
   );
 }
