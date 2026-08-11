@@ -107,11 +107,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>
-            Black Pearl Inc. connects clients with independent labour-law
-            professionals; it does not itself provide legal representation or advice.
-          </p>
+        <div className="container-page py-5 flex items-center justify-center text-xs text-white/40">
           <p>© 2026 Black Pearl Inc. All rights reserved.</p>
         </div>
       </div>
