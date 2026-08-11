@@ -42,3 +42,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+.env*
+
+# local agent/CLI tooling artifacts (Neon/Vercel agent skills, session locks)
+/.agents
+/.claude/skills
+/.claude/scheduled_tasks.lock
+/skills-lock.json

@@ -63,7 +63,9 @@ body {
 }
 
 .diagonal-accent {
-  background: linear-gradient(135deg, transparent 45%, rgba(210, 31, 47, 0.35) 50%, transparent 55%);
+  /* background-image only (not the `background` shorthand) so this never
+     clobbers a `bg-*` utility's background-color on the same element. */
+  background-image: linear-gradient(135deg, transparent 45%, rgba(210, 31, 47, 0.35) 50%, transparent 55%);
 }
 
 @keyframes reveal-up {

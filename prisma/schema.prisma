@@ -3,12 +3,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
-// SQLite has no native enum support in Prisma, so role/status fields are
-// plain strings constrained by the shared unions in lib/enums.ts.
+// Role/status fields are plain strings (constrained by the shared unions in
+// lib/enums.ts) rather than native Postgres enums, carried over from when
+// this schema targeted SQLite (which has no enum support) — changing them
+// now would mean a data migration, not just a schema change.
 
 model User {
   id           String   @id @default(cuid())
