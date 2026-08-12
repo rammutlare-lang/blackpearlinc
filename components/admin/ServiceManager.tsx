@@ -73,7 +73,7 @@ export function ServiceManager({ services }: { services: Service[] }) {
 
       <div className="mt-6 border-t border-tw-border pt-6">
         <p className="font-bold text-tw-ink mb-3">Add New Service</p>
-        <div className="grid sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <Input placeholder="Service name" value={name} onChange={(e) => setName(e.target.value)} />
           <Input placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <Input placeholder="Price (R)" type="number" value={price} onChange={(e) => setPrice(e.target.value)} />

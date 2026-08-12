@@ -43,7 +43,7 @@ export default async function AboutPage() {
       </section>
 
       <section className="container-page py-16">
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="rounded-2xl border border-tw-border bg-white p-6">
             <p className="eyebrow">Our Mission</p>
             <p className="mt-2 text-sm text-tw-muted">
@@ -82,7 +82,7 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-10 items-center">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="eyebrow">Our Story</p>
             <h3 className="mt-2 text-xl font-black text-tw-ink">
@@ -110,7 +110,7 @@ export default async function AboutPage() {
         <h3 className="mt-16 text-center text-2xl font-black uppercase text-tw-ink">
           Leadership Team
         </h3>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((m) => (
             <div key={m.id} className="rounded-xl border border-tw-border bg-white p-5 text-center">
               <div className="mx-auto h-20 w-20 rounded-full bg-tw-bg border border-tw-border" />

@@ -40,7 +40,7 @@ export default async function Home() {
     <div>
       <section className="bg-tw-black relative overflow-hidden">
         <HeroBackground src="/images/hero-home.jpg" />
-        <div className="container-page py-16 md:py-20 grid lg:grid-cols-[1fr_420px] gap-10 items-start relative z-10">
+        <div className="container-page py-16 md:py-20 grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-10 items-start relative z-10">
           <div>
             <p className="eyebrow">Expert Advice. Fair Solutions.</p>
             <h1 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight text-white">
@@ -103,7 +103,7 @@ export default async function Home() {
       </section>
 
       <section className="bg-tw-bg border-t border-tw-border">
-        <div className="container-page py-8 grid gap-8 md:grid-cols-[auto_1fr_auto] items-center">
+        <div className="container-page py-8 grid grid-cols-1 gap-8 md:grid-cols-[auto_1fr_auto] items-center">
           <div>
             <p className="text-xs font-bold uppercase text-tw-muted">Trusted By</p>
             <p className="text-sm font-bold text-tw-ink">Employees & Employers Across SA</p>
@@ -130,7 +130,7 @@ export default async function Home() {
           Simple Steps. Expert Solutions.
         </h2>
 
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {processSteps.map(([n, title, desc]) => (
             <div key={n} className="rounded-2xl border border-tw-border bg-white p-6">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-tw-red text-white font-black">
@@ -142,10 +142,10 @@ export default async function Home() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-2xl bg-tw-black p-8 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+        <div className="mt-10 rounded-2xl bg-tw-black p-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
             <p className="eyebrow">Why Choose Black Pearl Inc.?</p>
-            <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
               {whyChoose.map((w) => (
                 <li key={w} className="flex items-center gap-2">
                   <span className="text-tw-red">✓</span> {w}
@@ -160,7 +160,7 @@ export default async function Home() {
       </section>
 
       <section className="bg-tw-black">
-        <div className="container-page py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white/70">
+        <div className="container-page py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white/70">
           {trustFooter.map(([title, desc]) => (
             <div key={title} className="flex items-center gap-3">
               <span className="h-8 w-8 shrink-0 rounded-full border border-tw-red flex items-center justify-center text-tw-red text-xs font-bold">

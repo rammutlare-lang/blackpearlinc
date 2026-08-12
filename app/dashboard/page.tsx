@@ -22,7 +22,7 @@ export default async function DashboardOverviewPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Dashboard" }]} />
       <h1 className="text-2xl font-black text-tw-ink">My Consultations</h1>
 
-      <div className="mt-6 grid sm:grid-cols-3 gap-4">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card>
           <p className="text-2xl font-black text-tw-ink">{upcoming.length}</p>
           <p className="text-sm text-tw-muted">Upcoming</p>

@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!session?.user) redirect("/login");
 
   return (
-    <div className="container-page py-10 grid md:grid-cols-[240px_1fr] gap-8">
+    <div className="container-page py-10 grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8">
       <aside>
         <p className="text-sm text-tw-muted">Admin Console</p>
         <p className="font-black text-tw-ink">{session.user.name}</p>

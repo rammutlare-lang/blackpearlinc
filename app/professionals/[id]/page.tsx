@@ -18,7 +18,7 @@ export default async function ProfessionalDetailPage({
   return (
     <div>
       <section className="bg-tw-black diagonal-accent">
-        <div className="container-page py-16 grid md:grid-cols-[160px_1fr] gap-8 items-start">
+        <div className="container-page py-16 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8 items-start">
           <div className="h-40 w-40 rounded-2xl bg-white/10 border border-white/10" />
           <div>
             <Breadcrumbs
@@ -54,7 +54,7 @@ export default async function ProfessionalDetailPage({
         </div>
       </section>
 
-      <section className="container-page py-16 grid md:grid-cols-[1fr_320px] gap-10">
+      <section className="container-page py-16 grid grid-cols-1 md:grid-cols-[1fr_320px] gap-10">
         <div>
           <h2 className="text-lg font-black uppercase text-tw-ink">Biography</h2>
           <p className="mt-2 text-sm text-tw-muted">{professional.bio}</p>

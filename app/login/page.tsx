@@ -57,7 +57,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 min-h-[calc(100vh-80px)]">
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
       <div className="hidden lg:flex flex-col justify-between bg-tw-black diagonal-accent p-12">
         <Logo dark />
         <div>

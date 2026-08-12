@@ -177,7 +177,7 @@ function BookWizard() {
       <div className="mt-8 rounded-2xl border border-tw-border bg-white p-6 md:p-8">
         {step === 1 && (
           <div className="space-y-4">
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium text-tw-ink">Full Name</label>
                 <div className="mt-1.5">
@@ -263,7 +263,7 @@ function BookWizard() {
               We matched {professionals.length} vetted professional(s) for{" "}
               <strong>{selectedService?.name}</strong>.
             </p>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {professionals.map((p) => (
                 <button
                   key={p.id}
@@ -304,7 +304,7 @@ function BookWizard() {
             {loading ? (
               <p className="text-sm text-tw-muted">Loading availability...</p>
             ) : (
-              <div className="grid sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {slots.map((s) => {
                   const d = new Date(s.startsAt);
                   return (

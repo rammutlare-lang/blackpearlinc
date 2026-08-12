@@ -20,7 +20,7 @@ export default async function AdminOverviewPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Admin" }]} />
       <h1 className="text-2xl font-black text-tw-ink">Platform Overview</h1>
 
-      <div className="mt-6 grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         <Card>
           <p className="text-2xl font-black text-tw-ink">{users}</p>
           <p className="text-sm text-tw-muted">Total Users</p>

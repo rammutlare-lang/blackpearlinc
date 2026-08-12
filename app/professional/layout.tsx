@@ -17,7 +17,7 @@ export default async function ProfessionalLayout({ children }: { children: React
   const profile = await prisma.professionalProfile.findUnique({ where: { userId: session.user.id } });
 
   return (
-    <div className="container-page py-10 grid md:grid-cols-[220px_1fr] gap-8">
+    <div className="container-page py-10 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8">
       <aside>
         <p className="text-sm text-tw-muted">Professional Portal</p>
         <p className="font-black text-tw-ink">{session.user.name}</p>

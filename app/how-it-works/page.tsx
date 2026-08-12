@@ -33,7 +33,7 @@ export default async function HowItWorksPage() {
     <div>
       <section className="bg-tw-black relative overflow-hidden">
         <HeroBackground src="/images/hero-how-it-works.jpg" />
-        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10 items-center relative z-10">
+        <div className="container-page py-16 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-center relative z-10">
           <div>
             <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} />
             <p className="eyebrow">How It Works</p>
@@ -54,7 +54,7 @@ export default async function HowItWorksPage() {
       </section>
 
       <section className="container-page py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map(([n, title, desc], i) => (
             <div key={n} className="relative rounded-2xl border border-tw-border bg-white p-6">
               <span className="absolute -top-3 -left-3 h-9 w-9 rounded-lg bg-tw-black text-white flex items-center justify-center text-xs font-black">
@@ -71,7 +71,7 @@ export default async function HowItWorksPage() {
 
         <div className="mt-14 rounded-2xl bg-tw-black p-8">
           <p className="eyebrow">Why It Works</p>
-          <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-sm text-white/80">
+          <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-sm text-white/80">
             {whyItWorks.map((w) => (
               <li key={w} className="flex items-center gap-2">
                 <span className="text-tw-red">✓</span> {w}
@@ -82,7 +82,7 @@ export default async function HowItWorksPage() {
       </section>
 
       <section className="bg-tw-bg border-t border-tw-border">
-        <div className="container-page py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="container-page py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {footerStrip.map(([title, desc]) => (
             <div key={title} className="flex items-center gap-3">
               <span className="h-8 w-8 shrink-0 rounded-full border border-tw-red flex items-center justify-center text-tw-red text-xs font-bold">

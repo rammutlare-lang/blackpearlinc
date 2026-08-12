@@ -28,7 +28,7 @@ export default async function ServicesPage() {
     <div>
       <section className="bg-tw-black relative overflow-hidden">
         <HeroBackground src="/images/hero-services.jpg" />
-        <div className="container-page py-16 grid lg:grid-cols-[1fr_360px] gap-10 relative z-10">
+        <div className="container-page py-16 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 relative z-10">
           <div>
             <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
             <h1 className="mt-4 text-4xl md:text-5xl font-black text-white">
@@ -70,7 +70,7 @@ export default async function ServicesPage() {
           Our <span className="text-tw-red">Consultation</span> Services
         </h2>
 
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
             <div key={s.id} className="rounded-2xl border border-tw-border bg-white p-6">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-tw-red/10 text-tw-red font-black">
@@ -88,10 +88,10 @@ export default async function ServicesPage() {
           ))}
         </div>
 
-        <div className="mt-14 grid lg:grid-cols-[1fr_320px] gap-10 items-start">
+        <div className="mt-14 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
           <div>
             <h3 className="text-xl font-black uppercase text-tw-ink">A Simple, Professional Process</h3>
-            <div className="mt-6 grid sm:grid-cols-2 gap-6">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {processSteps.map(([n, title, desc]) => (
                 <div key={n} className="flex items-start gap-3">
                   <span className="h-10 w-10 shrink-0 rounded-full bg-tw-black text-white flex items-center justify-center text-xs font-black">
