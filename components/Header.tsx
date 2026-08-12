@@ -67,12 +67,10 @@ export function Header() {
         </button>
       </div>
 
-      {/* Nav row shares the same container-page as every page's content, so
-          the first link's left edge always matches the site's global
-          content edge — never position nav links inside the row above,
-          since the logo already occupies that row's left slot. */}
+      {/* Nav row shares the same container-page as every page's content;
+          the links are centered within that container on every page. */}
       <nav className="hidden lg:block border-t border-white/10">
-        <div className="container-page flex h-12 items-center gap-7">
+        <div className="container-page flex h-12 items-center justify-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
