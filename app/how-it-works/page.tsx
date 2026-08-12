@@ -1,13 +1,14 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
-import { prisma } from "@/lib/prisma";
 
 const steps = [
-  ["01", "Tell Us Your Issue", "Complete our quick intake form so we can understand your situation and needs."],
-  ["02", "Get Matched", "We match you with one of our vetted labour law professionals within 24 hours."],
-  ["03", "Book & Pay", "Choose a convenient time and pay securely online in just a few clicks."],
-  ["04", "Consult & Resolve", "Meet online or in person with your expert and get practical advice and clear next steps."],
+  ["01", "Tell Us What Happened", "Answer a few questions about your workplace issue."],
+  ["02", "We Assess Your Needs", "Black Pearl identifies the type of professional you need."],
+  ["03", "Meet Your Match", "Choose from suitable verified professionals."],
+  ["04", "Book & Pay", "Select a consultation and available time."],
+  ["05", "Get Your Advice", "Meet online or in person."],
+  ["06", "Decide Your Next Step", "Receive practical recommendations and further options if needed."],
 ];
 
 const whyItWorks = [
@@ -26,9 +27,7 @@ const footerStrip = [
   ["Dedicated Support", "We're here to assist you every step of the way."],
 ];
 
-export default async function HowItWorksPage() {
-  const stats = await prisma.siteStat.findMany({ orderBy: { order: "asc" } });
-
+export default function HowItWorksPage() {
   return (
     <div>
       <section className="bg-tw-black relative overflow-hidden">
@@ -41,8 +40,8 @@ export default async function HowItWorksPage() {
               Simple Steps. <br /> Expert <span className="text-tw-red">Solutions.</span>
             </h1>
             <p className="mt-4 text-white/60 max-w-lg">
-              We connect you with qualified labour law professionals to resolve your
-              workplace issues with confidence.
+              Tell us what happened. We&apos;ll connect you with the right professional
+              and help you decide your next step.
             </p>
           </div>
           <div className="panel-glass rounded-2xl p-6 text-center">
@@ -54,7 +53,7 @@ export default async function HowItWorksPage() {
       </section>
 
       <section className="container-page py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map(([n, title, desc], i) => (
             <div key={n} className="relative rounded-2xl border border-tw-border bg-white p-6">
               <span className="absolute -top-3 -left-3 h-9 w-9 rounded-lg bg-tw-black text-white flex items-center justify-center text-xs font-black">
@@ -78,6 +77,21 @@ export default async function HowItWorksPage() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-10 rounded-2xl border border-tw-border bg-white p-8">
+          <p className="eyebrow">What Black Pearl Does NOT Do</p>
+          <p className="mt-3 text-sm text-tw-muted max-w-2xl">
+            Black Pearl is a platform connecting clients with independent professionals.
+            Black Pearl does not replace a professional&apos;s independent judgment, and
+            using the platform does not by itself create an attorney-client
+            relationship. Each professional is responsible for the advice they give —
+            see our{" "}
+            <a href="/professional-disclaimer" className="text-tw-red font-semibold">
+              Professional Disclaimer
+            </a>{" "}
+            for full detail.
+          </p>
         </div>
       </section>
 
@@ -108,17 +122,6 @@ export default async function HowItWorksPage() {
           <ButtonLink href="/book" variant="white" size="lg" arrow>
             Book Consultation
           </ButtonLink>
-        </div>
-      </section>
-
-      <section className="bg-tw-black">
-        <div className="container-page py-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.id} className="text-center">
-              <p className="text-2xl font-black text-white">{s.value}</p>
-              <p className="text-xs text-white/50">{s.label}</p>
-            </div>
-          ))}
         </div>
       </section>
     </div>

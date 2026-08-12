@@ -4,9 +4,19 @@ import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 
+const reasons = [
+  "General enquiries",
+  "Client support",
+  "Professional enquiries",
+  "Business partnerships",
+  "Complaints",
+];
+
 export function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [reason, setReason] = useState(reasons[0]);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -16,12 +26,13 @@ export function ContactForm() {
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message }),
+      body: JSON.stringify({ name, email, phone, reason, message }),
     });
     setStatus(res.ok ? "sent" : "error");
     if (res.ok) {
       setName("");
       setEmail("");
+      setPhone("");
       setMessage("");
     }
   }
@@ -39,6 +50,18 @@ export function ContactForm() {
     <form onSubmit={submit} className="space-y-4">
       <Input placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} required />
       <Input type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      <Input placeholder="Phone (optional)" value={phone} onChange={(e) => setPhone(e.target.value)} />
+      <select
+        value={reason}
+        onChange={(e) => setReason(e.target.value)}
+        className="w-full rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
+      >
+        {reasons.map((r) => (
+          <option key={r} value={r}>
+            {r}
+          </option>
+        ))}
+      </select>
       <textarea
         placeholder="How can we help?"
         value={message}

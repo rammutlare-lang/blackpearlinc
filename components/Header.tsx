@@ -9,11 +9,12 @@ import { ButtonLink, Button } from "@/components/ui/Button";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/how-it-works", label: "How It Works" },
+  { href: "/employees", label: "Employees" },
+  { href: "/employers", label: "Employers" },
   { href: "/professionals", label: "Professionals" },
+  { href: "/services", label: "Services" },
   { href: "/resources", label: "Resources" },
-  { href: "/about", label: "About Us" },
+  { href: "/about", label: "About" },
 ];
 
 const dashboardHref: Record<string, string> = {
@@ -65,7 +66,7 @@ export function Header() {
                 Log In
               </ButtonLink>
               <ButtonLink href="/book" variant="red" size="md">
-                Book Consultation
+                Get Help
               </ButtonLink>
             </>
           )}
@@ -115,7 +116,7 @@ export function Header() {
                   Log In
                 </ButtonLink>
                 <ButtonLink href="/book" variant="red" size="md" className="flex-1">
-                  Book Consultation
+                  Get Help
                 </ButtonLink>
               </>
             )}

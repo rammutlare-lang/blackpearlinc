@@ -1,25 +1,29 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { HeroBackground } from "@/components/HeroBackground";
-import { prisma } from "@/lib/prisma";
 
-const heroTrust = [
-  ["Vetted", "Professionals"],
-  ["Fast & Easy", "Booking"],
-  ["Secure", "Payments"],
-  ["Confidential &", "Compliant"],
+const needHelpTags = [
+  ["Unfair Dismissal", "unfair-dismissal-ccma"],
+  ["Disciplinary", "disciplinary-hearings"],
+  ["Contract", "employment-contracts"],
+  ["CCMA", "unfair-dismissal-ccma"],
+  ["Grievance", "grievances"],
+  ["Salary", "salary-leave-disputes"],
+  ["Retrenchment", "retrenchment-advice"],
+  ["Mediation", "workplace-mediation"],
+  ["HR Compliance", "workplace-policies-compliance"],
 ];
 
-const partners = ["SACPCMP", "LHRD", "CCMA", "PSA"];
+const builtFor = ["Employees", "Employers", "HR Professionals", "Labour Practitioners"];
 
 const processSteps = [
-  ["01", "Submit Your Request", "Tell us about your issue in a few simple steps."],
-  ["02", "We Match You", "We connect you with a vetted labour law expert."],
+  ["01", "Tell Us Your Issue", "Answer a few questions about what happened."],
+  ["02", "We Match You", "We connect you with the right verified professional."],
   ["03", "Book & Pay", "Choose a time that works and pay securely online."],
-  ["04", "Consult & Resolve", "Get practical advice and clear next steps."],
+  ["04", "Get Advice", "Meet with your professional and get a clear action plan."],
 ];
 
 const whyChoose = [
-  "Specialised labour law expertise",
+  "Verified, vetted professionals",
   "Practical, solution-focused advice",
   "Confidential & secure",
   "Transparent pricing",
@@ -33,94 +37,59 @@ const trustFooter = [
   ["Dedicated Support", "We're here to help every step of the way."],
 ];
 
-export default async function Home() {
-  const stats = await prisma.siteStat.findMany({ orderBy: { order: "asc" } });
-
+export default function Home() {
   return (
     <div>
       <section className="bg-tw-black relative overflow-hidden">
         <HeroBackground src="/images/hero-home.jpg" />
-        <div className="container-page py-16 md:py-20 grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-10 items-start relative z-10">
-          <div>
-            <p className="eyebrow">Expert Advice. Fair Solutions.</p>
-            <h1 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight text-white">
-              Professional Labour Law <span className="text-tw-red">Consultations</span>
-            </h1>
-            <p className="mt-6 text-white/60 max-w-lg">
-              Connect with vetted labour law professionals for practical solutions and
-              peace of mind.
-            </p>
+        <div className="container-page py-16 md:py-20 relative z-10">
+          <p className="eyebrow">Black Pearl Inc.</p>
+          <h1 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight text-white max-w-3xl">
+            Employee Relations & <span className="text-tw-red">Workplace Solutions</span>
+          </h1>
+          <p className="mt-6 text-xl font-bold text-white max-w-2xl">
+            Tell us what happened. We&apos;ll connect you with the right professional.
+          </p>
+          <p className="mt-3 text-white/60 max-w-2xl">
+            Whether you&apos;re an employee dealing with a workplace problem or an employer
+            needing employee-relations support, Black Pearl helps you find the right
+            expertise.
+          </p>
 
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
-              {heroTrust.map(([title, sub]) => (
-                <div key={title} className="flex items-center gap-2">
-                  <span className="h-9 w-9 shrink-0 rounded-full border border-tw-red flex items-center justify-center text-tw-red">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                      <circle cx="7" cy="7" r="5" />
-                    </svg>
-                  </span>
-                  <span className="text-xs font-bold text-white uppercase leading-tight">
-                    {title}
-                    <br />
-                    <span className="text-white/50 font-medium normal-case">{sub}</span>
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <ButtonLink href="/book" variant="red" size="lg" arrow>
-                Book a Consultation
-              </ButtonLink>
-              <ButtonLink href="/how-it-works" variant="outline-white" size="lg">
-                How It Works
-              </ButtonLink>
-            </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <ButtonLink href="/employees" variant="red" size="lg" arrow>
+              I&apos;m an Employee
+            </ButtonLink>
+            <ButtonLink href="/employers" variant="outline-white" size="lg" arrow>
+              I&apos;m an Employer
+            </ButtonLink>
           </div>
 
-          <div className="panel-glass rounded-2xl p-6">
-            <p className="text-center text-lg font-black text-white">
-              Simple. Fast. Confidential.
+          <div className="mt-12 border-t border-white/10 pt-8">
+            <p className="text-sm font-bold uppercase tracking-wide text-white/60">
+              What do you need help with?
             </p>
-            <div className="mt-6 space-y-5">
-              {processSteps.map(([n, title, desc]) => (
-                <div key={n} className="flex items-start gap-3">
-                  <span className="h-9 w-9 shrink-0 rounded-full bg-tw-red text-white flex items-center justify-center text-xs font-black">
-                    {n}
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold text-white">{title}</p>
-                    <p className="text-xs text-white/50">{desc}</p>
-                  </div>
-                </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {needHelpTags.map(([label, slug]) => (
+                <ButtonLink key={label} href={`/book?service=${slug}`} variant="outline-white" size="sm">
+                  {label}
+                </ButtonLink>
               ))}
             </div>
-            <p className="mt-6 text-xs text-white/40 border-t border-white/10 pt-4">
-              Your information is protected and never shared.
-            </p>
           </div>
         </div>
       </section>
 
       <section className="bg-tw-bg border-t border-tw-border">
-        <div className="container-page py-8 grid grid-cols-1 gap-8 md:grid-cols-[auto_1fr_auto] items-center">
-          <div>
-            <p className="text-xs font-bold uppercase text-tw-muted">Trusted By</p>
-            <p className="text-sm font-bold text-tw-ink">Employees & Employers Across SA</p>
-          </div>
-          <div className="flex flex-wrap gap-8 justify-start md:justify-center text-sm font-bold text-tw-muted">
-            {partners.map((p) => (
-              <span key={p}>{p}</span>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-8">
-            {stats.map((s) => (
-              <div key={s.id} className="text-center">
-                <p className="text-2xl font-black text-tw-ink">{s.value}</p>
-                <p className="text-xs text-tw-muted">{s.label}</p>
-              </div>
-            ))}
-          </div>
+        <div className="container-page py-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+          <p className="text-xs font-bold uppercase tracking-wide text-tw-muted">
+            Built for South African Workplaces
+          </p>
+          {builtFor.map((b) => (
+            <span key={b} className="text-sm font-bold text-tw-ink">
+              {b}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -140,6 +109,12 @@ export default async function Home() {
               <p className="mt-1 text-sm text-tw-muted">{desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-6 text-center">
+          <ButtonLink href="/how-it-works" variant="outline-red" size="sm">
+            See the Full Process
+          </ButtonLink>
         </div>
 
         <div className="mt-10 rounded-2xl bg-tw-black p-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">

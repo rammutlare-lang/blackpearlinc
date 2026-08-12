@@ -1,19 +1,22 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { prisma } from "@/lib/prisma";
+import { professionalTypes } from "@/lib/enums";
 
 export default async function ProfessionalsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; location?: string }>;
+  searchParams: Promise<{ q?: string; location?: string; type?: string }>;
 }) {
-  const { q, location } = await searchParams;
+  const { q, location, type } = await searchParams;
 
   const professionals = await prisma.professionalProfile.findMany({
     where: {
       verificationStatus: "APPROVED",
       ...(location ? { location: { contains: location } } : {}),
+      ...(type ? { professionalType: type } : {}),
       ...(q
         ? {
             OR: [
@@ -35,13 +38,13 @@ export default async function ProfessionalsPage({
         <HeroBackground src="/images/hero-professionals.jpg" />
         <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Professionals" }]} />
-          <p className="eyebrow">Meet Our Vetted Professionals</p>
+          <p className="eyebrow">Find Your Workplace Professional</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">
             Qualified Experts. <br /> <span className="text-tw-red">Trusted Advice.</span>
           </h1>
           <p className="mt-4 text-white/60 max-w-xl">
-            Connect with experienced and vetted labour law professionals who are ready
-            to assist you with your workplace challenges.
+            Search by problem, profession, location or language and connect with a
+            Black Pearl Verified professional.
           </p>
         </div>
       </section>
@@ -54,6 +57,18 @@ export default async function ProfessionalsPage({
             placeholder="Search by name, expertise or keyword..."
             className="flex-1 rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
           />
+          <select
+            name="type"
+            defaultValue={type ?? ""}
+            className="w-full md:w-64 rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
+          >
+            <option value="">All Professions</option>
+            {professionalTypes.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
           <input
             name="location"
             defaultValue={location}
@@ -74,12 +89,16 @@ export default async function ProfessionalsPage({
                   <p className="font-bold text-tw-ink">
                     {p.user.firstName} {p.user.lastName}
                   </p>
-                  <p className="text-xs text-tw-red">{p.designation}</p>
+                  <p className="text-xs text-tw-red font-bold uppercase">{p.professionalType}</p>
+                  <p className="text-xs text-tw-muted">{p.designation}</p>
                   <p className="text-xs text-tw-muted">{p.location}</p>
                 </div>
               </div>
+              <div className="mt-3">
+                <VerifiedBadge compact />
+              </div>
               <p className="mt-3 text-xs text-tw-muted">
-                ★ {p.ratingAvg.toFixed(1)} ({p.ratingCount} reviews)
+                ★ {p.ratingAvg.toFixed(1)} ({p.ratingCount} consultations)
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {p.specializations.split(",").slice(0, 4).map((s) => (

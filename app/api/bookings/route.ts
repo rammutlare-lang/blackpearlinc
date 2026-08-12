@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid input" }, { status: 400 });
   }
 
-  const { professionalId, serviceId, slotId, consultationType, issueDescription } = parsed.data;
+  const { professionalId, serviceId, slotId, consultationType, issueDescription, urgency } = parsed.data;
 
   const slot = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
   if (!slot || slot.professionalId !== professionalId || slot.isBooked) {
@@ -41,6 +41,7 @@ export async function POST(req: Request) {
         slotId,
         consultationType,
         issueDescription,
+        urgency,
         priceCents,
       },
     });

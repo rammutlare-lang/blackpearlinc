@@ -14,16 +14,24 @@ const categoryDescriptions: Record<ResourceCategory, string> = {
   WEBINAR: "Stay informed with our videos and webinars.",
 };
 
+const audienceTabs = [
+  { key: "", label: "All" },
+  { key: "EMPLOYEE", label: "Employees" },
+  { key: "EMPLOYER", label: "Employers" },
+  { key: "HR", label: "HR" },
+];
+
 export default async function ResourcesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; audience?: string }>;
 }) {
-  const { q } = await searchParams;
+  const { q, audience } = await searchParams;
   const resources = await prisma.resource.findMany({
-    where: q
-      ? { OR: [{ title: { contains: q } }, { summary: { contains: q } }] }
-      : undefined,
+    where: {
+      ...(audience ? { audience: { in: [audience, "BOTH"] } } : {}),
+      ...(q ? { OR: [{ title: { contains: q } }, { summary: { contains: q } }] } : {}),
+    },
     orderBy: { publishedAt: "desc" },
   });
 
@@ -33,13 +41,13 @@ export default async function ResourcesPage({
         <HeroBackground src="/images/hero-resources.jpg" />
         <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Resources" }]} />
-          <p className="eyebrow">Resources</p>
+          <p className="eyebrow">Black Pearl Workplace Hub</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">
             Knowledge. Tools. <span className="text-tw-red">Empowerment.</span>
           </h1>
           <p className="mt-4 text-white/60 max-w-xl">
-            Access reliable labour law information, practical tools and guides to
-            help you understand your rights and protect your workplace.
+            Access reliable workplace information, practical tools and guides — for
+            employees, employers and HR professionals.
           </p>
 
           <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl">
@@ -57,7 +65,21 @@ export default async function ResourcesPage({
       </section>
 
       <section className="container-page py-16">
-        <h2 className="text-xl font-black uppercase text-tw-ink">Explore By Category</h2>
+        <div className="flex flex-wrap gap-2">
+          {audienceTabs.map((t) => (
+            <Link
+              key={t.key}
+              href={t.key ? `/resources?audience=${t.key}` : "/resources"}
+              className={`text-sm font-bold uppercase rounded-full px-4 py-2 ${
+                (audience ?? "") === t.key ? "bg-tw-red text-white" : "bg-tw-bg text-tw-muted"
+              }`}
+            >
+              {t.label}
+            </Link>
+          ))}
+        </div>
+
+        <h2 className="mt-10 text-xl font-black uppercase text-tw-ink">Explore By Category</h2>
         <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {(Object.keys(resourceCategoryLabels) as ResourceCategory[]).map((cat) => (
             <div key={cat} className="rounded-xl border border-tw-border bg-white p-5">
@@ -82,11 +104,9 @@ export default async function ResourcesPage({
               </span>
               <h4 className="mt-3 font-bold text-tw-ink text-sm">{r.title}</h4>
               <p className="mt-1 text-xs text-tw-muted">{r.summary}</p>
-              {r.isPremium && (
-                <span className="mt-3 inline-block text-[10px] font-bold uppercase text-tw-red">
-                  Members Only
-                </span>
-              )}
+              <span className="mt-3 inline-block text-xs font-black text-tw-ink">
+                {r.priceCents ? `R${(r.priceCents / 100).toFixed(0)}` : "Free"}
+              </span>
             </Link>
           ))}
           {resources.length === 0 && (

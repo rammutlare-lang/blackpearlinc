@@ -8,8 +8,9 @@ import { Button, ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { Input } from "@/components/ui/Input";
+import { urgencyLabels, type Urgency } from "@/lib/enums";
 
-type Service = { id: string; slug: string; name: string; defaultPriceCents: number };
+type Service = { id: string; slug: string; name: string; defaultPriceCents: number; audience: string };
 type ProfessionalService = { priceCents: number | null; service: Service };
 type Professional = {
   id: string;
@@ -26,6 +27,7 @@ type Professional = {
 type Slot = { id: string; startsAt: string; endsAt: string };
 
 const steps = ["Your Issue", "Choose a Professional", "Pick a Time", "Review & Pay"];
+const personaOptions = ["Employee", "Employer", "HR Professional", "Other"] as const;
 
 export default function BookPage() {
   return (
@@ -52,6 +54,8 @@ function BookWizard() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [organisation, setOrganisation] = useState("");
+  const [persona, setPersona] = useState<(typeof personaOptions)[number]>("Employee");
+  const [urgency, setUrgency] = useState<Urgency>("NOT_URGENT");
   const [serviceId, setServiceId] = useState(searchParams.get("service") ?? "");
   const [issueDescription, setIssueDescription] = useState("");
   const [consultationType, setConsultationType] = useState<"ONLINE" | "IN_PERSON">("ONLINE");
@@ -124,7 +128,14 @@ function BookWizard() {
     const createRes = await fetch("/api/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ professionalId, serviceId, slotId, consultationType, issueDescription }),
+      body: JSON.stringify({
+        professionalId,
+        serviceId,
+        slotId,
+        consultationType,
+        issueDescription: `[${persona}] ${issueDescription}`,
+        urgency,
+      }),
     });
     const createBody = await createRes.json();
     if (!createRes.ok) {
@@ -177,6 +188,24 @@ function BookWizard() {
       <div className="mt-8 rounded-2xl border border-tw-border bg-white p-6 md:p-8">
         {step === 1 && (
           <div className="space-y-4">
+            <div>
+              <label className="text-sm font-medium text-tw-ink">I am</label>
+              <div className="mt-1.5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {personaOptions.map((p) => (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => setPersona(p)}
+                    className={`rounded-lg border px-3 py-2 text-sm font-semibold ${
+                      persona === p ? "border-tw-red bg-tw-red/5 text-tw-red" : "border-tw-border text-tw-muted"
+                    }`}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium text-tw-ink">Full Name</label>
@@ -212,11 +241,18 @@ function BookWizard() {
                 className="mt-1.5 w-full rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
               >
                 <option value="">Select a service...</option>
-                {services.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.name} — from R{(s.defaultPriceCents / 100).toFixed(0)}
-                  </option>
-                ))}
+                {services
+                  .filter((s) => {
+                    if (persona === "Employee") return s.audience === "EMPLOYEE" || s.audience === "BOTH";
+                    if (persona === "Employer" || persona === "HR Professional")
+                      return s.audience === "EMPLOYER" || s.audience === "BOTH";
+                    return true;
+                  })
+                  .map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.name} — from R{(s.defaultPriceCents / 100).toFixed(0)}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -244,6 +280,24 @@ function BookWizard() {
                     }`}
                   >
                     {t === "ONLINE" ? "Online" : "In Person"}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-tw-ink">How Urgent Is This?</label>
+              <div className="mt-1.5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {(Object.keys(urgencyLabels) as Urgency[]).map((u) => (
+                  <button
+                    key={u}
+                    type="button"
+                    onClick={() => setUrgency(u)}
+                    className={`rounded-lg border px-3 py-2 text-sm font-semibold ${
+                      urgency === u ? "border-tw-red bg-tw-red/5 text-tw-red" : "border-tw-border text-tw-muted"
+                    }`}
+                  >
+                    {urgencyLabels[u]}
                   </button>
                 ))}
               </div>

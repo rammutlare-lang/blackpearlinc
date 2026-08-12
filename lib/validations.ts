@@ -46,6 +46,7 @@ export const bookingCreateSchema = z.object({
   slotId: z.string().min(1),
   consultationType: z.enum(["ONLINE", "IN_PERSON"]),
   issueDescription: z.string().min(10),
+  urgency: z.enum(["TODAY", "WITHIN_48H", "THIS_WEEK", "NOT_URGENT"]).optional(),
 });
 
 export type BookingCreateInput = z.infer<typeof bookingCreateSchema>;

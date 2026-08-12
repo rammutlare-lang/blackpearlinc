@@ -3,15 +3,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
-const values = ["Integrity", "Confidentiality", "Empowerment", "Excellence", "Fairness"];
-
-const whyChoose = [
-  ["1200+", "Consultations Completed"],
-  ["35+", "Vetted Labour Law Professionals"],
-  ["4.8/5", "Average Client Satisfaction"],
-  ["100%", "Confidential & Secure"],
-  ["24–48hrs", "Professional Response Time"],
-];
+const principles = ["Confidentiality", "Integrity", "Fairness", "Professionalism", "Accessibility"];
 
 export default async function AboutPage() {
   const team = await prisma.teamMember.findMany({ orderBy: { order: "asc" } });
@@ -28,13 +20,9 @@ export default async function AboutPage() {
             <span className="text-tw-red">Building Fair Workplaces.</span>
           </h1>
           <p className="mt-4 text-white/60 max-w-2xl">
-            Black Pearl Inc. is a trusted employee relations company that connects
-            individuals and employers with qualified professionals for practical,
-            reliable and affordable advice.
-          </p>
-          <p className="mt-2 text-white/60 max-w-2xl">
-            We simplify labour law, protect rights and promote fair workplace
-            relationships across South Africa.
+            Workplace disputes are often complicated, stressful and expensive. Black
+            Pearl was created to make professional employee-relations support easier
+            to access, easier to understand and more transparent.
           </p>
           <ButtonLink href="/services" variant="red" size="lg" arrow className="mt-6">
             Our Services
@@ -47,21 +35,21 @@ export default async function AboutPage() {
           <div className="rounded-2xl border border-tw-border bg-white p-6">
             <p className="eyebrow">Our Mission</p>
             <p className="mt-2 text-sm text-tw-muted">
-              To make expert labour law advice accessible to everyone and help build
-              fair, productive and compliant workplaces.
+              To connect South African employees and employers with trusted workplace
+              professionals and practical solutions.
             </p>
           </div>
           <div className="rounded-2xl border border-tw-border bg-white p-6">
             <p className="eyebrow">Our Vision</p>
             <p className="mt-2 text-sm text-tw-muted">
-              A South Africa where every workplace is fair, every right is protected
-              and every dispute is resolved with dignity.
+              To become South Africa&apos;s leading digital employee-relations
+              marketplace.
             </p>
           </div>
           <div className="rounded-2xl border border-tw-border bg-white p-6">
-            <p className="eyebrow">Our Values</p>
+            <p className="eyebrow">Our Principles</p>
             <ul className="mt-2 space-y-1 text-sm text-tw-muted">
-              {values.map((v) => (
+              {principles.map((v) => (
                 <li key={v} className="flex items-center gap-2">
                   <span className="text-tw-red">✓</span> {v}
                 </li>
@@ -70,24 +58,12 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-tw-black p-8">
-          <p className="text-center eyebrow">Why Choose Black Pearl Inc.?</p>
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-5 gap-6">
-            {whyChoose.map(([value, label]) => (
-              <div key={label} className="text-center">
-                <p className="text-2xl font-black text-white">{value}</p>
-                <p className="text-xs text-white/50">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="eyebrow">Our Story</p>
             <h3 className="mt-2 text-xl font-black text-tw-ink">
-              Bridging the gap between complex labour law and the people who need
-              clarity most.
+              Bridging the gap between complex workplace problems and the people who
+              need clarity most.
             </h3>
             <p className="mt-3 text-sm text-tw-muted">
               We saw how individuals and small businesses struggle to access reliable
@@ -95,9 +71,9 @@ export default async function AboutPage() {
               relationships.
             </p>
             <p className="mt-3 text-sm text-tw-muted">
-              Our platform was created to change that — by combining expert
-              knowledge, technology and a human touch to deliver solutions that are
-              practical, affordable and effective.
+              Black Pearl was created to change that — by combining expert knowledge,
+              technology and a human touch to deliver solutions that are practical,
+              affordable and effective for employees and employers alike.
             </p>
           </div>
           <div className="rounded-2xl bg-tw-bg border border-tw-border p-8 text-center">

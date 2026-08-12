@@ -3,23 +3,32 @@ import { Logo } from "@/components/Logo";
 
 const columns = [
   {
-    title: "Quick Links",
+    title: "Services",
     links: [
-      { href: "/services", label: "Services" },
-      { href: "/how-it-works", label: "How It Works" },
+      { href: "/employees", label: "Employees" },
+      { href: "/employers", label: "Employers" },
       { href: "/professionals", label: "Professionals" },
+      { href: "/book", label: "Book a Consultation" },
+      { href: "/pricing", label: "Pricing" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/how-it-works", label: "How It Works" },
       { href: "/resources", label: "Resources" },
-      { href: "/about", label: "About Us" },
-      { href: "/book", label: "Book Consultation" },
+      { href: "/join-as-professional", label: "Become a Professional" },
+      { href: "/contact", label: "Contact" },
     ],
   },
   {
     title: "Support",
     links: [
-      { href: "/contact", label: "Contact Us" },
       { href: "/faq", label: "FAQ" },
       { href: "/complaints", label: "Complaints" },
       { href: "/cancellation-refund-policy", label: "Cancellation & Refunds" },
+      { href: "/contact", label: "Client Support" },
     ],
   },
   {
@@ -36,7 +45,7 @@ const columns = [
 
 const trustStrip = [
   ["100% Confidential", "Your information is protected"],
-  ["Vetted Professionals", "Qualified & verified experts"],
+  ["Verified Professionals", "Qualified & vetted experts"],
   ["Secure Payments", "Safe & encrypted checkout"],
   ["Dedicated Support", "We're here to help"],
 ];
@@ -62,15 +71,20 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container-page py-14 grid grid-cols-1 md:grid-cols-5 gap-10">
+      <div className="container-page py-14 grid grid-cols-1 md:grid-cols-6 gap-10">
         <div className="md:col-span-2">
           <Logo dark />
           <p className="mt-4 text-sm text-white/50 max-w-xs">
-            Connecting individuals and employers with vetted labour-law professionals
-            for practical, confidential workplace advice.
+            Employee relations and workplace solutions, connecting employees and
+            employers with verified professionals across South Africa.
           </p>
+          <ul className="mt-5 space-y-2 text-sm text-white/50">
+            <li>087 550 0278</li>
+            <li>hello@blackpearlinc.co.za</li>
+            <li>123 Rivonia Road, Sandton, Johannesburg, 2196</li>
+          </ul>
           <div className="flex gap-3 mt-5">
-            {["FB", "X", "IN", "IG"].map((s) => (
+            {["FB", "X", "IN", "IG", "WA"].map((s) => (
               <span
                 key={s}
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] text-white/60"
@@ -95,15 +109,6 @@ export function Footer() {
             </ul>
           </div>
         ))}
-
-        <div>
-          <h4 className="text-white text-sm font-bold mb-4 uppercase tracking-wide">Contact Us</h4>
-          <ul className="space-y-2.5 text-sm text-white/50">
-            <li>087 550 0278</li>
-            <li>hello@blackpearlinc.co.za</li>
-            <li>123 Rivonia Road, Sandton, Johannesburg, 2196</li>
-          </ul>
-        </div>
       </div>
 
       <div className="border-t border-white/10">

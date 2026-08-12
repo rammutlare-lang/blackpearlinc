@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { prisma } from "@/lib/prisma";
 
 export default async function ProfessionalDetailPage({
@@ -30,12 +31,13 @@ export default async function ProfessionalDetailPage({
               ]}
             />
             <span className="inline-block text-xs font-bold uppercase text-tw-red bg-white/5 border border-tw-red/40 rounded-full px-3 py-1">
-              Vetted & Verified
+              ✓ Black Pearl Verified™
             </span>
             <h1 className="mt-3 text-3xl md:text-4xl font-black text-white">
               {professional.user.firstName} {professional.user.lastName}
             </h1>
-            <p className="mt-1 text-tw-red font-bold">{professional.designation}</p>
+            <p className="mt-1 text-tw-red font-bold">{professional.professionalType}</p>
+            <p className="mt-1 text-white/50 text-sm">{professional.designation}</p>
             <p className="mt-1 text-white/50 text-sm">{professional.location}</p>
             <p className="mt-1 text-white/50 text-sm">
               ★ {professional.ratingAvg.toFixed(1)} ({professional.ratingCount} reviews) ·{" "}
@@ -76,7 +78,9 @@ export default async function ProfessionalDetailPage({
         </div>
 
         <div className="rounded-2xl border border-tw-border bg-white p-6 h-fit">
-          <p className="font-bold text-tw-ink">Consultation Formats</p>
+          <VerifiedBadge />
+
+          <p className="mt-6 font-bold text-tw-ink">Consultation Formats</p>
           <ul className="mt-2 text-sm text-tw-muted space-y-1">
             {professional.offersOnline && <li>✓ Online consultation</li>}
             {professional.offersInPerson && <li>✓ In-person consultation</li>}

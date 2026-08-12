@@ -18,6 +18,28 @@ export default function ConsultationTermsPage() {
           They do not constitute formal legal representation unless separately agreed
           with the professional, and outcomes cannot be guaranteed.
         </p>
+
+        <h2 className="text-lg font-bold text-tw-ink">What&apos;s Included</h2>
+        <p>A standard consultation includes:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Review of the information you submitted</li>
+          <li>A consultation with your matched professional</li>
+          <li>General advice on your situation</li>
+          <li>Recommended next steps</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-tw-ink">What&apos;s Not Automatically Included</h2>
+        <p>Unless specifically purchased or otherwise agreed with your professional, a consultation does not include:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Court or CCMA representation</li>
+          <li>Drafting extensive legal documents</li>
+          <li>Follow-up meetings beyond the booked session</li>
+          <li>Formal written legal opinions</li>
+        </ul>
+        <p>
+          Your professional will tell you if further, separately priced support is
+          needed.
+        </p>
         <h2 className="text-lg font-bold text-tw-ink">Confidentiality</h2>
         <p>
           Information you share during a consultation is treated as confidential by the

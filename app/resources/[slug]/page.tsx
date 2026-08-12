@@ -29,7 +29,19 @@ export default async function ResourceDetailPage({
       </p>
       <p className="mt-6 text-tw-muted leading-relaxed">{resource.body}</p>
 
-      <div className="mt-10 rounded-2xl bg-tw-black p-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="mt-10 rounded-2xl border border-tw-border bg-white p-6 flex items-center justify-between gap-4">
+        <div>
+          <p className="text-xs uppercase text-tw-muted">Price</p>
+          <p className="text-2xl font-black text-tw-ink">
+            {resource.priceCents ? `R${(resource.priceCents / 100).toFixed(0)}` : "Free"}
+          </p>
+        </div>
+        <ButtonLink href="/contact" variant="red" size="md" arrow>
+          {resource.priceCents ? "Buy This Resource" : "Download"}
+        </ButtonLink>
+      </div>
+
+      <div className="mt-6 rounded-2xl bg-tw-black p-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-white font-bold">Have a question about this topic?</p>
         <ButtonLink href="/book" variant="red" size="md" arrow>
           Book a Consultation
