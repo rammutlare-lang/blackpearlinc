@@ -3,6 +3,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
+// Services are admin-editable via /admin/services, so this page must not be
+// statically prerendered at build time — it needs to reflect current data.
+export const dynamic = "force-dynamic";
+
 const flow = ["Problem", "Assessment", "Professional", "Consultation", "Action Plan"];
 
 const whyChoose = [

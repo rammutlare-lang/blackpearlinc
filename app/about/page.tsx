@@ -3,6 +3,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
+// Team members are admin-editable via /admin/team, so this page must not be
+// statically prerendered at build time — it needs to reflect current data.
+export const dynamic = "force-dynamic";
+
 const principles = ["Confidentiality", "Integrity", "Fairness", "Professionalism", "Accessibility"];
 
 export default async function AboutPage() {
