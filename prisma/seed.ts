@@ -441,6 +441,42 @@ const resources = [
     body: "A plain-language explanation of what qualifies as a grievance and how the process typically works.",
     priceCents: null,
   },
+  {
+    title: "The Basic Conditions of Employment Act, Explained",
+    slug: "bcea-explained",
+    category: "LAW" as const,
+    audience: "BOTH",
+    summary: "A plain-language overview of the BCEA and what it guarantees every employee.",
+    body: "Covers working hours, leave, notice periods and remuneration protections set out in the BCEA.",
+    priceCents: null,
+  },
+  {
+    title: "The Labour Relations Act: What It Means for You",
+    slug: "lra-what-it-means-for-you",
+    category: "LAW" as const,
+    audience: "BOTH",
+    summary: "Understanding your rights and obligations under the LRA, from dismissal to unfair labour practice.",
+    body: "An accessible walkthrough of the LRA provisions most relevant to everyday workplace disputes.",
+    priceCents: null,
+  },
+  {
+    title: "Understanding CCMA Arbitration: A Recorded Briefing",
+    slug: "understanding-ccma-arbitration-briefing",
+    category: "WEBINAR" as const,
+    audience: "EMPLOYEE",
+    summary: "A recorded session walking through what happens at CCMA arbitration and how to prepare.",
+    body: "A recorded briefing covering arbitration procedure, evidence, representation and outcomes.",
+    priceCents: null,
+  },
+  {
+    title: "HR Compliance Essentials for Small Businesses",
+    slug: "hr-compliance-essentials-small-business",
+    category: "TEMPLATE" as const,
+    audience: "HR",
+    summary: "The core policies and records every small business needs to stay compliant.",
+    body: "A practical starter pack covering the minimum HR policies, records and processes SMEs need in place.",
+    priceCents: 14900,
+  },
 ];
 
 async function main() {
