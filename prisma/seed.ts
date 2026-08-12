@@ -264,12 +264,12 @@ const services = [
   },
   {
     slug: "performance-management",
-    name: "Performance Management System",
-    description: "A structured system for fairly and lawfully managing underperformance. Priced from — final quote depends on scope.",
+    name: "Performance Management Support",
+    description: "Guidance on structuring a fair, lawful performance-management process, from documentation to outcome.",
     icon: "briefcase",
     audience: "EMPLOYER",
-    defaultDurationMins: 90,
-    defaultPriceCents: 499500,
+    defaultDurationMins: 60,
+    defaultPriceCents: 149500,
   },
   {
     slug: "hr-employee-relations-strategy",
