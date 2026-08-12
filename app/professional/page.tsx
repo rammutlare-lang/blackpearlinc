@@ -19,7 +19,7 @@ export default async function ProfessionalOverviewPage() {
   const now = new Date();
   const upcoming = bookings.filter((b) => b.status === "CONFIRMED" && b.slot.startsAt >= now);
   const completed = bookings.filter((b) => b.status === "COMPLETED");
-  const earningsCents = completed.reduce((sum, b) => sum + b.priceCents, 0);
+  const earningsCents = completed.reduce((sum, b) => sum + (b.payment?.payoutCents ?? 0), 0);
 
   return (
     <div>
@@ -37,7 +37,7 @@ export default async function ProfessionalOverviewPage() {
         </Card>
         <Card>
           <p className="text-2xl font-black text-tw-ink">R{(earningsCents / 100).toFixed(0)}</p>
-          <p className="text-sm text-tw-muted">Earnings</p>
+          <p className="text-sm text-tw-muted">Earnings (Your Payout)</p>
         </Card>
         <Card>
           <p className="text-2xl font-black text-tw-ink">
@@ -46,6 +46,22 @@ export default async function ProfessionalOverviewPage() {
           <p className="text-sm text-tw-muted">Rating</p>
         </Card>
       </div>
+
+      <Card className="mt-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <p className="text-xs uppercase text-tw-muted">Membership Tier</p>
+            <p className="font-bold text-tw-ink">{profile.professionalTier.replace("_", " ")}</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase text-tw-muted">Platform Commission</p>
+            <p className="font-bold text-tw-ink">{Math.round(profile.commissionRate * 100)}% per consultation</p>
+          </div>
+          <ButtonLink href="/join-as-professional" variant="outline-red" size="sm">
+            About Membership Tiers
+          </ButtonLink>
+        </div>
+      </Card>
 
       <h2 className="mt-8 font-black uppercase text-tw-ink text-sm">Bookings</h2>
       <div className="mt-3 space-y-3">

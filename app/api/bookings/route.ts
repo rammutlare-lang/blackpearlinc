@@ -32,6 +32,13 @@ export async function POST(req: Request) {
   }
   const priceCents = professionalService?.priceCents ?? service.defaultPriceCents;
 
+  const professional = await prisma.professionalProfile.findUnique({ where: { id: professionalId } });
+  if (!professional) {
+    return NextResponse.json({ error: "Professional not found" }, { status: 404 });
+  }
+  const platformCents = Math.round(priceCents * professional.commissionRate);
+  const payoutCents = priceCents - platformCents;
+
   const booking = await prisma.$transaction(async (tx) => {
     const created = await tx.booking.create({
       data: {
@@ -50,6 +57,8 @@ export async function POST(req: Request) {
       data: {
         bookingId: created.id,
         amountCents: priceCents,
+        payoutCents,
+        platformCents,
         reference: `TW-${created.id.slice(-8).toUpperCase()}`,
       },
     });

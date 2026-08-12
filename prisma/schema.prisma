@@ -47,6 +47,8 @@ model ProfessionalProfile {
   offersOnline       Boolean  @default(true)
   offersInPerson     Boolean  @default(false)
   verificationStatus String   @default("PENDING") // PENDING | APPROVED | REJECTED
+  professionalTier   String   @default("VERIFIED") // VERIFIED | VERIFIED_PRO | VERIFIED_PREMIUM | PARTNER
+  commissionRate     Float    @default(0.25) // platform's share of each consultation, 0-1
   ratingAvg          Float    @default(0)
   ratingCount        Int      @default(0)
   photoUrl           String?
@@ -119,15 +121,18 @@ model Booking {
 }
 
 model Payment {
-  id          String    @id @default(cuid())
-  booking     Booking   @relation(fields: [bookingId], references: [id])
-  bookingId   String    @unique
-  amountCents Int
-  status      String    @default("PENDING") // PENDING | PAID | FAILED | REFUNDED
-  provider    String    @default("MANUAL")
-  reference   String
-  paidAt      DateTime?
-  createdAt   DateTime  @default(now())
+  id             String    @id @default(cuid())
+  booking        Booking   @relation(fields: [bookingId], references: [id])
+  bookingId      String    @unique
+  amountCents    Int
+  payoutCents    Int // amount owed to the professional after platform commission
+  platformCents  Int // platform's share (amountCents - payoutCents)
+  status         String    @default("PENDING") // PENDING | PAID | FAILED | REFUNDED
+  refundPercent  Int? // set when a cancellation refund is processed
+  provider       String    @default("MANUAL")
+  reference      String
+  paidAt         DateTime?
+  createdAt      DateTime  @default(now())
 }
 
 model Review {

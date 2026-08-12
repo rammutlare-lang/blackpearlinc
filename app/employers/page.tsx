@@ -1,43 +1,50 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
+import { prisma } from "@/lib/prisma";
 
-const services = [
-  ["Disciplinary Support", "Guidance running fair, procedurally sound disciplinary processes."],
-  ["HR Policy Review", "Review and strengthen your workplace policies and procedures."],
-  ["Employee Grievances", "Structured support responding to formal employee grievances."],
-  ["Workplace Investigations", "Independent, structured investigations into misconduct allegations."],
-  ["Performance Management", "Advice on managing underperformance fairly and lawfully."],
-  ["Retrenchment Support", "Guidance running a fair, compliant retrenchment process."],
-  ["Labour Relations Advice", "Ongoing employee-relations and compliance advisory support."],
-];
+// Plans and project pricing are admin-editable, so this must not be
+// statically prerendered at build time.
+export const dynamic = "force-dynamic";
 
 const plans = [
   {
     name: "Starter",
     tagline: "For small businesses",
-    price: "R1,950",
+    price: "R2,495",
     period: "/month",
-    features: ["1 advisory consultation / month", "Email & phone support", "Access to HR templates", "Standard response time"],
+    features: ["1 advisory consultation / month", "Email & phone support", "Access to HR templates", "2-business-day response"],
   },
   {
     name: "Growth",
     tagline: "For growing businesses",
-    price: "R4,500",
+    price: "R5,995",
     period: "/month",
-    features: ["3 advisory consultations / month", "Priority booking", "Disciplinary process support", "Faster response time"],
+    features: ["4 consultations / month", "Priority support", "Disciplinary & grievance support", "1-business-day response"],
     highlight: true,
+  },
+  {
+    name: "Business",
+    tagline: "For established SMEs",
+    price: "R9,995",
+    period: "/month",
+    features: ["8 consultations / month", "Dedicated professional", "Retrenchment & investigation support", "Quarterly HR review"],
   },
   {
     name: "Enterprise",
     tagline: "For larger organisations",
-    price: "Custom",
-    period: "",
-    features: ["Dedicated account professional", "Unlimited consultations", "On-site support available", "Custom SLAs"],
+    price: "From R15,000",
+    period: "/month",
+    features: ["Dedicated professional & SLA", "Unlimited consultations", "On-site support where appropriate", "Custom reporting"],
   },
 ];
 
-export default function EmployersPage() {
+export default async function EmployersPage() {
+  const projectServices = await prisma.service.findMany({
+    where: { active: true, audience: "EMPLOYER" },
+    orderBy: { order: "asc" },
+  });
+
   return (
     <div>
       <section className="bg-tw-black relative overflow-hidden">
@@ -59,22 +66,6 @@ export default function EmployersPage() {
         </div>
       </section>
 
-      <section className="container-page py-16">
-        <p className="eyebrow text-center">Services</p>
-        <h2 className="mt-2 text-center text-2xl md:text-3xl font-black uppercase text-tw-ink">
-          Support Across the Employee Lifecycle
-        </h2>
-
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(([title, desc]) => (
-            <div key={title} className="rounded-2xl border border-tw-border bg-white p-6">
-              <p className="font-bold text-tw-ink">{title}</p>
-              <p className="mt-1 text-sm text-tw-muted">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="bg-tw-bg border-y border-tw-border">
         <div className="container-page py-16">
           <p className="eyebrow text-center">Plans</p>
@@ -85,11 +76,11 @@ export default function EmployersPage() {
             Indicative pricing — final plan pricing is confirmed with your account team.
           </p>
 
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((p) => (
               <div
                 key={p.name}
-                className={`rounded-2xl p-8 ${
+                className={`rounded-2xl p-6 ${
                   p.highlight ? "bg-tw-black text-white border-2 border-tw-red" : "bg-white border border-tw-border text-tw-ink"
                 }`}
               >
@@ -100,7 +91,7 @@ export default function EmployersPage() {
                 )}
                 <p className="font-black uppercase text-lg">{p.name}</p>
                 <p className={`text-sm ${p.highlight ? "text-white/60" : "text-tw-muted"}`}>{p.tagline}</p>
-                <p className="mt-4 text-3xl font-black">
+                <p className="mt-4 text-2xl font-black">
                   {p.price}
                   <span className="text-sm font-normal">{p.period}</span>
                 </p>
@@ -123,6 +114,45 @@ export default function EmployersPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="container-page py-16">
+        <p className="eyebrow text-center">Project Pricing</p>
+        <h2 className="mt-2 text-center text-2xl md:text-3xl font-black uppercase text-tw-ink">
+          Or Pay for What You Need, When You Need It
+        </h2>
+
+        <div className="mt-10 overflow-x-auto rounded-2xl border border-tw-border bg-white">
+          <table className="w-full text-sm">
+            <thead className="bg-tw-bg text-left text-xs uppercase text-tw-muted">
+              <tr>
+                <th className="p-4">Service</th>
+                <th className="p-4">Price</th>
+                <th className="p-4" />
+              </tr>
+            </thead>
+            <tbody>
+              {projectServices.map((s) => (
+                <tr key={s.id} className="border-t border-tw-border">
+                  <td className="p-4">
+                    <p className="font-semibold text-tw-ink">{s.name}</p>
+                    <p className="text-xs text-tw-muted">{s.description}</p>
+                  </td>
+                  <td className="p-4 font-bold text-tw-red whitespace-nowrap">R{(s.defaultPriceCents / 100).toFixed(0)}</td>
+                  <td className="p-4 text-right">
+                    <ButtonLink href={`/book?service=${s.slug}`} variant="outline-red" size="sm">
+                      Enquire
+                    </ButtonLink>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-xs text-tw-muted">
+          Items marked &quot;from&quot; in their description are quoted based on scope —
+          your final price is confirmed before you pay.
+        </p>
       </section>
 
       <section className="bg-tw-black">

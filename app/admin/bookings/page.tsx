@@ -8,6 +8,11 @@ export default async function AdminBookingsPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  const platformRevenueCents = bookings.reduce(
+    (sum, b) => sum + (b.payment?.status === "PAID" ? b.payment.platformCents : 0),
+    0
+  );
+
   return (
     <div>
       <Breadcrumbs
@@ -18,6 +23,9 @@ export default async function AdminBookingsPage() {
         ]}
       />
       <h1 className="text-2xl font-black text-tw-ink">Bookings & Payments</h1>
+      <p className="mt-2 text-sm text-tw-muted">
+        Platform revenue to date: <span className="font-bold text-tw-ink">R{(platformRevenueCents / 100).toFixed(2)}</span>
+      </p>
       <div className="mt-6 overflow-x-auto rounded-xl border border-tw-border bg-white">
         <table className="w-full text-sm">
           <thead className="bg-tw-bg text-left text-xs uppercase text-tw-muted">
@@ -28,7 +36,9 @@ export default async function AdminBookingsPage() {
               <th className="p-3">Date</th>
               <th className="p-3">Status</th>
               <th className="p-3">Payment</th>
-              <th className="p-3">Amount</th>
+              <th className="p-3">Total</th>
+              <th className="p-3">Payout</th>
+              <th className="p-3">Platform Revenue</th>
             </tr>
           </thead>
           <tbody>
@@ -45,11 +55,17 @@ export default async function AdminBookingsPage() {
                 <td className="p-3 text-tw-muted">{bookingStatusLabels[b.status as BookingStatus]}</td>
                 <td className="p-3 text-tw-muted">{b.payment?.status ?? "—"}</td>
                 <td className="p-3 text-tw-muted">R{(b.priceCents / 100).toFixed(2)}</td>
+                <td className="p-3 text-tw-muted">
+                  {b.payment ? `R${(b.payment.payoutCents / 100).toFixed(2)}` : "—"}
+                </td>
+                <td className="p-3 font-semibold text-tw-ink">
+                  {b.payment ? `R${(b.payment.platformCents / 100).toFixed(2)}` : "—"}
+                </td>
               </tr>
             ))}
             {bookings.length === 0 && (
               <tr>
-                <td className="p-3 text-tw-muted" colSpan={7}>
+                <td className="p-3 text-tw-muted" colSpan={9}>
                   No bookings yet.
                 </td>
               </tr>

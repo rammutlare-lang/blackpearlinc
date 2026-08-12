@@ -50,9 +50,21 @@ export default async function ProfessionalBookingDetailPage({
             <dd className="font-semibold text-tw-ink">{booking.consultationType === "ONLINE" ? "Online" : "In Person"}</dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-tw-muted">Fee</dt>
+            <dt className="text-tw-muted">Total Fee</dt>
             <dd className="font-semibold text-tw-ink">R{(booking.priceCents / 100).toFixed(2)}</dd>
           </div>
+          {booking.payment && (
+            <>
+              <div className="flex justify-between">
+                <dt className="text-tw-muted">Platform Commission</dt>
+                <dd className="text-tw-muted">−R{(booking.payment.platformCents / 100).toFixed(2)}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="font-bold text-tw-ink">Your Payout</dt>
+                <dd className="font-black text-tw-red">R{(booking.payment.payoutCents / 100).toFixed(2)}</dd>
+              </div>
+            </>
+          )}
         </dl>
         <p className="mt-4 text-sm text-tw-muted border-t border-tw-border pt-3">{booking.issueDescription}</p>
         {booking.status === "CONFIRMED" && (

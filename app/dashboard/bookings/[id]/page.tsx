@@ -21,7 +21,9 @@ export default async function ClientBookingDetailPage({
 
   if (!booking || booking.clientId !== session!.user.id) notFound();
 
-  const canCancel = booking.status === "CONFIRMED" && booking.slot.startsAt.getTime() - Date.now() > 24 * 60 * 60 * 1000;
+  const hoursUntil = (booking.slot.startsAt.getTime() - Date.now()) / (1000 * 60 * 60);
+  const canCancel = booking.status === "CONFIRMED" && hoursUntil > 0;
+  const expectedRefundPercent = hoursUntil >= 24 ? 100 : hoursUntil >= 12 ? 75 : 50;
 
   return (
     <div>
@@ -63,6 +65,9 @@ export default async function ClientBookingDetailPage({
         <p className="mt-4 text-sm text-tw-muted border-t border-tw-border pt-3">{booking.issueDescription}</p>
         {canCancel && (
           <div className="mt-4">
+            <p className="text-xs text-tw-muted mb-2">
+              Cancelling now entitles you to a {expectedRefundPercent}% refund.
+            </p>
             <CancelBookingButton bookingId={booking.id} />
           </div>
         )}

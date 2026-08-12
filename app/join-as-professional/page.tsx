@@ -21,12 +21,39 @@ const steps = [
 ];
 
 const details = [
-  ["Commission", "Black Pearl retains a platform commission on each paid consultation — full rate sheet provided during onboarding."],
   ["Professional Requirements", "You must hold the relevant qualification, registration or accreditation for the services you offer."],
   ["Verification", "Identity, qualifications, professional registration and experience are verified before your profile goes live."],
   ["Code of Conduct", "Professionals are expected to maintain confidentiality, professionalism and to act within their area of expertise."],
   ["Payment", "Client payments are processed through Black Pearl and paid out to professionals on a regular cycle."],
   ["Complaints", "Client complaints are reviewed through our formal complaints process — see our Complaints page for details."],
+];
+
+const tiers = [
+  {
+    name: "Verified",
+    price: "Free",
+    commission: "25%",
+    features: ["Verified profile", "Professional listing", "Client reviews", "Availability calendar"],
+  },
+  {
+    name: "Verified Pro",
+    price: "R499/month",
+    commission: "20%",
+    features: ["Priority leads", "Enhanced profile & analytics", "Professional dashboard", "Reduced commission"],
+  },
+  {
+    name: "Verified Premium",
+    price: "R999/month",
+    commission: "15%",
+    features: ["Priority placement", "Advanced analytics", "Professional badge", "Featured placement"],
+    highlight: true,
+  },
+  {
+    name: "Professional Partner",
+    price: "R1,999/month",
+    commission: "10–12.5%",
+    features: ["Multiple professionals", "Company profile", "Team dashboard", "Priority marketplace placement"],
+  },
 ];
 
 export default function JoinAsProfessionalPage() {
@@ -77,6 +104,43 @@ export default function JoinAsProfessionalPage() {
           ))}
         </div>
 
+        <p className="mt-14 eyebrow text-center">Membership Tiers</p>
+        <h2 className="mt-2 text-center text-2xl md:text-3xl font-black uppercase text-tw-ink">
+          Grow Your Practice, Keep More of What You Earn
+        </h2>
+        <p className="mt-2 text-center text-sm text-tw-muted max-w-xl mx-auto">
+          Every professional starts on Verified, free of charge. As you build a track
+          record on the platform, higher tiers reduce your commission rate.
+        </p>
+
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tiers.map((t) => (
+            <div
+              key={t.name}
+              className={`rounded-2xl p-6 ${
+                t.highlight ? "bg-tw-black text-white border-2 border-tw-red" : "bg-white border border-tw-border text-tw-ink"
+              }`}
+            >
+              <p className="font-black uppercase">{t.name}</p>
+              <p className="mt-2 text-xl font-black">{t.price}</p>
+              <p className={`text-xs mt-1 ${t.highlight ? "text-white/60" : "text-tw-muted"}`}>
+                {t.commission} platform commission
+              </p>
+              <ul className="mt-4 space-y-1.5 text-xs">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-1.5">
+                    <span className="text-tw-red">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-center text-xs text-tw-muted">
+          Commission is deducted automatically before payout — you always see your
+          exact payout for every booking in your professional dashboard.
+        </p>
+
         <div className="mt-14 grid sm:grid-cols-2 gap-6">
           {details.map(([title, desc]) => (
             <div key={title} className="rounded-2xl border border-tw-border bg-white p-6">
@@ -84,6 +148,18 @@ export default function JoinAsProfessionalPage() {
               <p className="mt-1 text-sm text-tw-muted">{desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 rounded-2xl border border-tw-border bg-white p-6 max-w-2xl mx-auto text-sm text-tw-muted leading-relaxed">
+          <p className="font-bold text-tw-ink">Legal Professional Services & CCMA Representation</p>
+          <p className="mt-2">
+            Legal professional fees are determined by the appointed legal
+            practitioner and are subject to applicable professional and regulatory
+            requirements. Where representation before the CCMA is provided by a
+            non-legal representative, Black Pearl&apos;s commission model is applied
+            only to consultation and preparation services — not to any fee for
+            representation itself, in line with applicable CCMA requirements.
+          </p>
         </div>
       </section>
 
