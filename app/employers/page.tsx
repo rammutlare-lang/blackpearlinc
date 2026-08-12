@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HeroBackground } from "@/components/HeroBackground";
+import { PageHero } from "@/components/PageHero";
 import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
@@ -266,19 +265,21 @@ export default async function EmployersPage() {
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-employers.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Employers" }]} />
-          <p className="eyebrow">Black Pearl for Business</p>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black text-white max-w-2xl">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Employers" }]}
+        eyebrow="Black Pearl for Business"
+        title={
+          <>
             Better Employee Relations. <span className="text-tw-red">Stronger Businesses.</span>
-          </h1>
-          <p className="mt-4 text-white/70 max-w-xl">
-            Professional workplace support without the cost of a full HR or
-            labour-relations department.
-          </p>
-          <p className="mt-4 text-white/60 max-w-xl">
+          </>
+        }
+        description="Professional workplace support without the cost of a full HR or labour-relations department."
+        image="/images/hero-employers.jpg"
+      />
+
+      <section className="bg-tw-bg py-8">
+        <div className="container-page flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <p className="text-tw-muted max-w-2xl">
             Running a business means managing people, performance, policies,
             workplace conflict and compliance — all while focusing on your
             customers and growth. Black Pearl gives businesses access to
@@ -286,11 +287,11 @@ export default async function EmployersPage() {
             whether you need help with a single employee matter, ongoing HR
             support or a complex workplace issue.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 shrink-0">
             <ButtonLink href="/book" variant="red" size="lg" arrow>
               Get Business Support
             </ButtonLink>
-            <ButtonLink href="#plans" variant="outline-white" size="lg" arrow>
+            <ButtonLink href="#plans" variant="outline-red" size="lg" arrow>
               Explore Employer Plans
             </ButtonLink>
           </div>

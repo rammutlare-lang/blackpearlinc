@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHero } from "@/components/PageHero";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 
@@ -69,30 +69,29 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-about.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
-          <p className="eyebrow">About Black Pearl</p>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black text-white max-w-2xl">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+        eyebrow="About Black Pearl"
+        title={
+          <>
             Empowering People. <br />
             <span className="text-tw-red">Building Fair Workplaces.</span>
-          </h1>
-          <p className="mt-4 text-lg font-bold text-white max-w-2xl">
+          </>
+        }
+        description="Black Pearl is a digital employee-relations marketplace connecting employees, employers and appropriately qualified workplace professionals through a trusted, transparent, technology-enabled platform."
+        image="/images/hero-about.jpg"
+      />
+
+      <section className="bg-tw-bg py-8">
+        <div className="container-page flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <p className="text-lg font-bold text-tw-ink max-w-xl">
             Professional workplace expertise, made accessible.
           </p>
-          <p className="mt-3 text-white/60 max-w-2xl">
-            Black Pearl is a digital employee-relations marketplace connecting
-            employees, employers and appropriately qualified workplace professionals
-            through a trusted, transparent and technology-enabled platform. We believe
-            that when people understand their workplace rights, responsibilities and
-            options, better decisions can be made — and better workplaces can be built.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 shrink-0">
             <ButtonLink href="#who-we-are" variant="red" size="lg" arrow>
               Meet Black Pearl
             </ButtonLink>
-            <ButtonLink href="/professionals" variant="outline-white" size="lg">
+            <ButtonLink href="/professionals" variant="outline-red" size="lg">
               Find Professional Support
             </ButtonLink>
           </div>

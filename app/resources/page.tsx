@@ -1,8 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HeroBackground } from "@/components/HeroBackground";
+import { PageHero } from "@/components/PageHero";
 import { prisma } from "@/lib/prisma";
 import { resourceCategoryLabels, type ResourceCategory } from "@/lib/enums";
 
@@ -165,25 +164,26 @@ export default async function ResourcesPage({
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-resources.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Resources" }]} />
-          <p className="eyebrow">Black Pearl Workplace Knowledge Centre</p>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Resources" }]}
+        eyebrow="Black Pearl Workplace Knowledge Centre"
+        title={
+          <>
             Knowledge. Tools. <span className="text-tw-red">Empowerment.</span>
-          </h1>
-          <p className="mt-4 text-white/60 max-w-xl">
-            Reliable, plain-language workplace information, templates and tools —
-            built for employees, employers and the professionals who support them.
-          </p>
+          </>
+        }
+        description="Reliable, plain-language workplace information, templates and tools — built for employees, employers and the professionals who support them."
+        image="/images/hero-resources.jpg"
+      />
 
-          <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl">
+      <section className="bg-tw-bg py-8">
+        <div className="container-page">
+          <form className="flex flex-col sm:flex-row gap-3 max-w-2xl">
             <input
               name="q"
               defaultValue={q}
               placeholder="Search guides, templates, laws and tools..."
-              className="flex-1 rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-tw-red/50"
+              className="flex-1 rounded-lg border border-tw-border bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
             />
             <button className="rounded-full bg-tw-red px-6 py-2.5 text-sm font-bold uppercase text-white">
               Search Resources
@@ -191,12 +191,12 @@ export default async function ResourcesPage({
           </form>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="text-xs text-white/40 uppercase font-bold">Popular:</span>
+            <span className="text-xs text-tw-muted uppercase font-bold">Popular:</span>
             {popularSearches.map((term) => (
               <Link
                 key={term}
                 href={`/resources?q=${encodeURIComponent(term)}`}
-                className="text-xs rounded-full border border-white/20 px-3 py-1 text-white/70 hover:border-tw-red hover:text-white"
+                className="text-xs rounded-full border border-tw-border px-3 py-1 text-tw-muted hover:border-tw-red hover:text-tw-red"
               >
                 {term}
               </Link>

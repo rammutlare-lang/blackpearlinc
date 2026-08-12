@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HeroBackground } from "@/components/HeroBackground";
+import { PageHero } from "@/components/PageHero";
 import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
@@ -48,20 +47,17 @@ export default async function ServicesPage() {
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-services.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
-          <h1 className="mt-4 text-4xl md:text-5xl font-black text-white">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Services" }]}
+        eyebrow="Our Services"
+        title={
+          <>
             Expert <span className="text-tw-red">Employee Relations Solutions</span>
-          </h1>
-          <p className="mt-4 text-white/60 max-w-2xl">
-            Whether you&apos;re dealing with a workplace problem as an employee or need
-            employee-relations support as an employer, we connect you with the right
-            verified professional.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description="Whether you're dealing with a workplace problem as an employee or need employee-relations support as an employer, we connect you with the right verified professional."
+        image="/images/hero-services.jpg"
+      />
 
       <section className="container-page py-16">
         <h2 className="text-2xl md:text-3xl font-black uppercase text-tw-ink">

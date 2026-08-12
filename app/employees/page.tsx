@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HeroBackground } from "@/components/HeroBackground";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "For Employees",
@@ -201,36 +200,36 @@ const faqs = [
 export default function EmployeesPage() {
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-employees.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Employees" }]} />
-          <p className="eyebrow">For Employees</p>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black text-white max-w-2xl">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Employees" }]}
+        eyebrow="For Employees"
+        title={
+          <>
             Having a Workplace Problem? <span className="text-tw-red">You Don&apos;t Have to Face It Alone.</span>
-          </h1>
-          <p className="mt-4 text-white/70 max-w-xl">
-            Workplace problems can be stressful, confusing and difficult to
-            navigate. Whether you&apos;ve been dismissed, called to a disciplinary
-            hearing, subjected to harassment, denied workplace benefits, placed
-            on suspension, asked to resign or are facing retrenchment, Black
-            Pearl helps you understand your situation and connect with
-            appropriate professional support.
-          </p>
-          <p className="mt-4 text-tw-red font-bold">
-            Tell us what happened. We&apos;ll help you find the right next step.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          </>
+        }
+        description="Workplace problems can be stressful, confusing and difficult to navigate. Black Pearl helps you understand your situation and connect with appropriate professional support."
+        image="/images/hero-employees.jpg"
+      />
+
+      <section className="bg-tw-bg py-8">
+        <div className="container-page flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div>
+            <p className="text-tw-red font-bold">
+              Tell us what happened. We&apos;ll help you find the right next step.
+            </p>
+            <p className="mt-1 text-xs text-tw-muted uppercase font-bold">
+              Confidential support. Professional expertise. Your decision.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
             <ButtonLink href="/book" variant="red" size="lg" arrow>
               Get Help Now
             </ButtonLink>
-            <ButtonLink href="/resources?audience=EMPLOYEE" variant="outline-white" size="lg" arrow>
+            <ButtonLink href="/resources?audience=EMPLOYEE" variant="outline-red" size="lg" arrow>
               Explore Workplace Resources
             </ButtonLink>
           </div>
-          <p className="mt-4 text-xs text-white/40 uppercase font-bold">
-            Confidential support. Professional expertise. Your decision.
-          </p>
         </div>
       </section>
 

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HeroBackground } from "@/components/HeroBackground";
+import { PageHero } from "@/components/PageHero";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { prisma } from "@/lib/prisma";
 import type { ProfessionalType } from "@/lib/enums";
@@ -234,41 +233,41 @@ export default async function ProfessionalsPage({
 
   return (
     <div>
-      <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-professionals.jpg" />
-        <div className="container-page py-16 relative z-10">
-          <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Professionals" }]} />
-          <p className="eyebrow">Find Your Workplace Professional</p>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black text-white">
+      <PageHero
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Professionals" }]}
+        eyebrow="Find Your Workplace Professional"
+        title={
+          <>
             The Right Expertise <span className="text-tw-red">for Your Workplace Matter</span>
-          </h1>
-          <p className="mt-4 text-white/60 max-w-xl">
-            Connect with appropriately qualified workplace professionals who can help
-            you understand your situation, explore your options and take informed
-            next steps.
-          </p>
+          </>
+        }
+        description="Connect with appropriately qualified workplace professionals who can help you understand your situation, explore your options and take informed next steps."
+        image="/images/hero-professionals.jpg"
+      />
 
-          <form className="mt-8 rounded-2xl border border-white/20 bg-white/5 p-4 flex flex-col md:flex-row gap-3">
+      <section className="bg-tw-bg py-8">
+        <div className="container-page">
+          <form className="rounded-2xl border border-tw-border bg-white p-4 flex flex-col md:flex-row gap-3">
             <input
               name="q"
               defaultValue={q}
               placeholder="Search by profession, expertise or workplace issue..."
-              className="flex-1 rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-tw-red/50"
+              className="flex-1 rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
             />
             <input
               name="location"
               defaultValue={location}
               placeholder="Location"
-              className="w-full md:w-48 rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-tw-red/50"
+              className="w-full md:w-48 rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
             />
             <select
               name="language"
               defaultValue={language ?? ""}
-              className="w-full md:w-48 rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:ring-2 focus:ring-tw-red/50"
+              className="w-full md:w-48 rounded-lg border border-tw-border px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-tw-red/30"
             >
-              <option value="" className="text-tw-ink">Language</option>
+              <option value="">Language</option>
               {languages.map((l) => (
-                <option key={l} value={l} className="text-tw-ink">
+                <option key={l} value={l}>
                   {l}
                 </option>
               ))}
