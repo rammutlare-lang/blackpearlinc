@@ -42,7 +42,7 @@ export function PageHero({
       <div className="absolute inset-0 bg-tw-black/55" />
       <div className="absolute inset-0 bg-gradient-to-t from-tw-black/70 via-transparent to-tw-black/40" />
       <div className="relative z-10 flex h-full items-center">
-        <div className="container-page">
+        <div className="container-page w-full">
           <Breadcrumbs dark items={breadcrumb} />
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="mt-2 text-4xl md:text-5xl font-black leading-tight text-white max-w-2xl">
