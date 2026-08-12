@@ -202,7 +202,7 @@ export default function EmployeesPage() {
   return (
     <div>
       <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-home.jpg" />
+        <HeroBackground src="/images/hero-employees.jpg" />
         <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Employees" }]} />
           <p className="eyebrow">For Employees</p>

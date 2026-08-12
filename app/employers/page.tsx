@@ -267,7 +267,7 @@ export default async function EmployersPage() {
   return (
     <div>
       <section className="bg-tw-black relative overflow-hidden">
-        <HeroBackground src="/images/hero-about.jpg" />
+        <HeroBackground src="/images/hero-employers.jpg" />
         <div className="container-page py-16 relative z-10">
           <Breadcrumbs dark items={[{ label: "Home", href: "/" }, { label: "Employers" }]} />
           <p className="eyebrow">Black Pearl for Business</p>
