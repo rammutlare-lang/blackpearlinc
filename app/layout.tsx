@@ -16,9 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Black Pearl Inc. — Employee Relations Company",
+  title: {
+    default: "Black Pearl Inc. — Employee Relations & Workplace Solutions",
+    template: "%s | Black Pearl Inc.",
+  },
   description:
-    "Connect with vetted labour-law professionals for practical, confidential workplace advice across South Africa.",
+    "Black Pearl connects employees and employers with appropriately qualified, verified workplace professionals across South Africa — HR, employee relations, labour consultants, mediators and attorneys.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

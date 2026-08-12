@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description: "The terms and conditions governing use of the Black Pearl platform.",
+};
 
 export default function TermsPage() {
   return (

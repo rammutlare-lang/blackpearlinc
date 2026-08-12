@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with Black Pearl for general enquiries, client support, professional applications or business partnerships.",
+};
 
 const reasons = [
   ["General enquiries", "Questions about Black Pearl or how the platform works."],

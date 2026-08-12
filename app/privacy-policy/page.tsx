@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How Black Pearl collects, uses, stores and shares your personal information.",
+};
 
 export default function PrivacyPolicyPage() {
   return (

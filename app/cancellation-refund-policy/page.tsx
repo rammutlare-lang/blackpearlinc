@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Cancellation & Refund Policy",
+  description: "Black Pearl's cancellation, rescheduling and refund policy for client and professional bookings.",
+};
 
 const employeeScenarios = [
   ["More than 24 hours before appointment", "100% refund or free rescheduling"],

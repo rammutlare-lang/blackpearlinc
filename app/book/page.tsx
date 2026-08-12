@@ -78,7 +78,10 @@ function BookWizard() {
         const preselected = searchParams.get("service");
         if (preselected) {
           const match = data.find((s) => s.slug === preselected);
-          if (match) setServiceId(match.id);
+          // If the slug doesn't match any active service (e.g. a stale link),
+          // fall back to an empty selection rather than leaving the raw slug
+          // string in state, which would silently fail at submit time.
+          setServiceId(match ? match.id : "");
         }
       });
   }, [searchParams]);

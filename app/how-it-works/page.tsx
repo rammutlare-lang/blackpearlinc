@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
+
+export const metadata: Metadata = {
+  title: "How It Works",
+  description:
+    "See exactly how Black Pearl works: tell us what happened, get matched with a verified professional, book, pay securely and get support.",
+};
 
 const steps = [
   ["01", "Tell Us What Happened", "Answer a few questions about your workplace issue."],

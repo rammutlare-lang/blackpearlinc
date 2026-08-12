@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
+
+export const metadata: Metadata = {
+  title: "Join as a Professional",
+  description:
+    "Grow your practice on Black Pearl. Join as a verified HR, employee relations, labour or legal professional — free to start, with tiered membership as you grow.",
+};
 
 const whoCanApply = [
   "Labour attorneys",

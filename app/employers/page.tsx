@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
+
+export const metadata: Metadata = {
+  title: "For Businesses",
+  description:
+    "Flexible HR and employee-relations support for South African SMEs — plans from R2,495/month or pay per matter, without the cost of a full HR department.",
+};
 
 // Plans and project pricing are admin-editable, so this must not be
 // statically prerendered at build time.
@@ -204,8 +211,8 @@ const caseManagementFeatures = [
 ];
 
 const professionalKinds = [
-  "HR Professionals", "Employee Relations Specialists", "Labour Relations Practitioners",
-  "Labour Consultants", "Workplace Mediators", "Employment Specialists", "Attorneys",
+  "HR Professionals", "Employee Relations Practitioners", "CCMA Practitioners",
+  "Labour Consultants", "Mediators", "Disciplinary Specialists", "Attorneys",
   "Other Appropriately Qualified Professionals",
 ];
 

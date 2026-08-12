@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Black Pearl is a South African workplace-expertise marketplace connecting employees and employers with verified, appropriately qualified professionals.",
+};
 
 // Team members are admin-editable via /admin/team, so this page must not be
 // statically prerendered at build time — it needs to reflect current data.

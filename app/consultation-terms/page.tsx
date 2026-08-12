@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Consultation Terms",
+  description: "The terms that apply to consultations booked through Black Pearl.",
+};
 
 export default function ConsultationTermsPage() {
   return (

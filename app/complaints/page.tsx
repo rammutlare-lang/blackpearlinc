@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Complaints",
+  description: "How to submit a complaint about Black Pearl or an independent professional, and what happens next.",
+};
 
 const steps = [
   ["1", "Submit Complaint", "Tell us what happened, including your booking reference if applicable."],

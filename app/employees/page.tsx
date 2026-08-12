@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
+
+export const metadata: Metadata = {
+  title: "For Employees",
+  description:
+    "Having a workplace problem? Black Pearl helps South African employees understand dismissal, disciplinary, grievance, harassment and retrenchment situations and connects you with a verified professional.",
+};
 
 const problems = [
   {
@@ -8,7 +15,7 @@ const problems = [
     title: "Unfair Dismissal",
     prompt: "Think your dismissal may have been unfair?",
     body: "Understand the basics of dismissal, important considerations, possible dispute-resolution routes and what information you may need.",
-    slug: "unfair-dismissal-ccma",
+    slug: "unfair-dismissal-assessment",
   },
   {
     icon: "📋",
@@ -533,7 +540,7 @@ export default function EmployeesPage() {
             <h2 className="mt-2 text-xl font-black uppercase text-tw-ink">You Don&apos;t Need to Know Who You Need</h2>
             <p className="mt-3 text-sm text-tw-muted">
               You might not know whether your matter requires an HR
-              professional, labour-relations specialist, mediator, labour
+              professional, employee relations practitioner, mediator, labour
               consultant or attorney. That&apos;s okay. Tell Black Pearl what
               happened and explore professionals based on:
             </p>

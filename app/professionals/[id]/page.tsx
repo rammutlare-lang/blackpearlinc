@@ -1,8 +1,26 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { prisma } from "@/lib/prisma";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const professional = await prisma.professionalProfile.findFirst({
+    where: { id, verificationStatus: "APPROVED" },
+    include: { user: true },
+  });
+  if (!professional) return { title: "Professional" };
+  return {
+    title: `${professional.user.firstName} ${professional.user.lastName} — ${professional.designation}`,
+    description: professional.bio,
+  };
+}
 
 export default async function ProfessionalDetailPage({
   params,

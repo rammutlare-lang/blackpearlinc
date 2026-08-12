@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions",
+  description: "Answers to common questions about how Black Pearl works, pricing, professionals, bookings, cancellations and privacy.",
+};
 
 const sections = [
   {

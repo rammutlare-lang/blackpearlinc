@@ -1,10 +1,17 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { prisma } from "@/lib/prisma";
 import type { ProfessionalType } from "@/lib/enums";
+
+export const metadata: Metadata = {
+  title: "Find a Professional",
+  description:
+    "Search Black Pearl's network of verified HR professionals, employee relations practitioners, mediators, labour consultants and attorneys by expertise, location and language.",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -118,12 +125,13 @@ const ratingFactors = ["Professionalism", "Communication", "Knowledge", "Respons
 
 const professionalKinds = [
   "HR Professionals",
-  "Labour Relations Practitioners",
+  "Employee Relations Practitioners",
+  "CCMA Practitioners",
+  "Mediators",
   "Labour Consultants",
-  "Workplace Mediators",
-  "Employee Relations Specialists",
+  "Disciplinary Specialists",
   "Attorneys",
-  "Other Appropriately Qualified Specialists",
+  "Other Appropriately Qualified Professionals",
 ];
 
 const joinReasons = [

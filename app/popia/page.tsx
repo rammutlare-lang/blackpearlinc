@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "POPIA Notice",
+  description: "Black Pearl's notice on processing personal information under the Protection of Personal Information Act (POPIA).",
+};
 
 export default function PopiaPage() {
   return (

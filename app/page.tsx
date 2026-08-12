@@ -2,15 +2,15 @@ import { ButtonLink } from "@/components/ui/Button";
 import { HeroBackground } from "@/components/HeroBackground";
 
 const needHelpTags = [
-  ["Unfair Dismissal", "unfair-dismissal-ccma"],
+  ["Unfair Dismissal", "unfair-dismissal-assessment"],
   ["Disciplinary", "disciplinary-hearings"],
   ["Contract", "employment-contracts"],
-  ["CCMA", "unfair-dismissal-ccma"],
+  ["CCMA", "ccma-case-assessment"],
   ["Grievance", "grievances"],
   ["Salary", "salary-leave-disputes"],
   ["Retrenchment", "retrenchment-advice"],
-  ["Mediation", "workplace-mediation"],
-  ["HR Compliance", "workplace-policies-compliance"],
+  ["Harassment", "harassment-unfair-practices"],
+  ["Resignation", "resignation-advice"],
 ];
 
 const builtFor = ["Employees", "Employers", "HR Professionals", "Labour Practitioners"];

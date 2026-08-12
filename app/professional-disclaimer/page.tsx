@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Professional Disclaimer",
+  description: "Black Pearl's role as a marketplace platform and the independent responsibility of professionals for their own advice and services.",
+};
 
 export default function ProfessionalDisclaimerPage() {
   return (

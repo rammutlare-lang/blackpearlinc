@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Browse Black Pearl's full catalogue of employee and employer workplace services, from quick consultations to disciplinary, retrenchment and HR compliance support.",
+};
 
 // Services are admin-editable via /admin/services, so this page must not be
 // statically prerendered at build time — it needs to reflect current data.

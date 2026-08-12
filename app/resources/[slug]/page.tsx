@@ -1,8 +1,20 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { prisma } from "@/lib/prisma";
 import { resourceCategoryLabels, type ResourceCategory } from "@/lib/enums";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const resource = await prisma.resource.findUnique({ where: { slug } });
+  if (!resource) return { title: "Resource" };
+  return { title: resource.title, description: resource.summary };
+}
 
 export default async function ResourceDetailPage({
   params,

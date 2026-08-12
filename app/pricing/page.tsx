@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Transparent pricing for employees, employers and professionals — consultation fees from R295, business plans from R2,495/month and professional membership from free.",
+};
 
 // Pricing is admin-editable via /admin/services, so this page must not be
 // statically prerendered at build time — it needs to reflect current data.

@@ -1,9 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HeroBackground } from "@/components/HeroBackground";
 import { prisma } from "@/lib/prisma";
 import { resourceCategoryLabels, type ResourceCategory } from "@/lib/enums";
+
+export const metadata: Metadata = {
+  title: "Workplace Knowledge Centre",
+  description:
+    "Free guides, templates, calculators and CCMA resources to help South African employees and employers understand workplace rights and processes.",
+};
 
 export const dynamic = "force-dynamic";
 
