@@ -451,8 +451,8 @@ export default async function ResourcesPage({
       </section>
 
       <section className="bg-tw-black py-16">
-        <div className="container-page text-center">
-          <p className="text-white/70 max-w-2xl mx-auto">
+        <div className="container-page">
+          <p className="text-white/70 max-w-2xl">
             Black Pearl exists to make workplace knowledge accessible — so that
             every employee, employer and professional in South Africa can act
             with clarity and confidence.

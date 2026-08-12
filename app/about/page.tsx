@@ -257,11 +257,11 @@ export default async function AboutPage() {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl bg-tw-black p-8 max-w-2xl mx-auto text-center">
+          <div className="mt-10 rounded-2xl bg-tw-black p-8">
             <span className="inline-block text-xs font-bold uppercase text-tw-red bg-white/5 border border-tw-red/40 rounded-full px-3 py-1">
               ✓ Black Pearl Verified
             </span>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-white/70 max-w-2xl">
               A Black Pearl verification status indicates that the professional has
               undergone Black Pearl&apos;s stated verification process. Verification
               does not guarantee a particular outcome, quality of advice or
@@ -340,11 +340,11 @@ export default async function AboutPage() {
 
       <section className="bg-tw-black">
         <div className="container-page py-16">
-          <p className="eyebrow text-center">Our Commitment</p>
-          <h2 className="mt-2 text-center text-2xl md:text-3xl font-black uppercase text-white max-w-2xl mx-auto">
+          <p className="eyebrow">Our Commitment</p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase text-white max-w-2xl">
             We Don&apos;t Promise Outcomes. We Promise a Better Way to Find Support.
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-center text-sm text-white/60">
+          <p className="mt-4 max-w-2xl text-sm text-white/60">
             Workplace disputes do not always have simple answers. No platform can
             guarantee that a dispute will be won, an employee will be reinstated, an
             employer will prevail or a particular legal outcome will occur. What
@@ -352,7 +352,7 @@ export default async function AboutPage() {
             professional support. We are committed to building a platform that
             promotes:
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             {commitments.map((c) => (
               <span key={c} className="text-sm font-bold text-white bg-white/5 border border-white/10 rounded-full px-4 py-2">
                 {c}
@@ -393,12 +393,12 @@ export default async function AboutPage() {
 
       <section className="bg-tw-black relative overflow-hidden">
         <HeroBackground src="/images/hero-about.jpg" />
-        <div className="container-page py-16 relative z-10 text-center">
+        <div className="container-page py-16 relative z-10">
           <p className="eyebrow">Black Pearl</p>
           <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase text-white">
             Empowering People. Building Fair Workplaces.
           </h2>
-          <p className="mt-4 max-w-xl mx-auto text-sm text-white/70">
+          <p className="mt-4 max-w-xl text-sm text-white/70">
             We believe access to workplace expertise should be simpler, more
             transparent and more human. We connect people with expertise. We make
             workplace support easier to access. We help people move forward with
@@ -407,7 +407,7 @@ export default async function AboutPage() {
           <p className="mt-4 text-sm font-bold text-white">
             Professional workplace expertise, made accessible.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             <ButtonLink href="/book" variant="red" size="lg" arrow>
               Find Professional Support
             </ButtonLink>

@@ -81,8 +81,8 @@ export default async function ServicesPage() {
         </div>
 
         <div className="mt-16 rounded-2xl bg-tw-black p-8">
-          <p className="eyebrow text-center">What Happens Next?</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <p className="eyebrow">What Happens Next?</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             {flow.map((f, i) => (
               <div key={f} className="flex items-center gap-3">
                 <span className="text-sm font-bold text-white bg-white/10 rounded-full px-4 py-2">{f}</span>

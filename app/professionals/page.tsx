@@ -591,10 +591,10 @@ export default async function ProfessionalsPage({
       </section>
 
       <section className="bg-tw-black py-16">
-        <div className="container-page text-center">
+        <div className="container-page">
           <span className="eyebrow">Can&apos;t Find the Right Professional?</span>
           <h2 className="mt-2 text-2xl font-black text-white">We&apos;ll Help You Find a Match</h2>
-          <p className="mt-2 text-white/60 max-w-xl mx-auto">
+          <p className="mt-2 text-white/60 max-w-xl">
             Tell us what you&apos;re dealing with and let Black Pearl help connect you
             with professionals whose listed expertise may be appropriate for your needs.
           </p>
@@ -608,15 +608,15 @@ export default async function ProfessionalsPage({
       </section>
 
       <section className="container-page pb-16">
-        <div className="rounded-2xl bg-tw-charcoal p-10 text-center">
+        <div className="rounded-2xl bg-tw-charcoal p-10">
           <h2 className="text-2xl font-black text-white">Find the Right Workplace Expertise</h2>
-          <p className="mt-2 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-2 text-white/60 max-w-2xl">
             Whether you&apos;re an employee looking for guidance, an employer seeking
             HR support or an organisation dealing with a complex workplace matter,
             the right professional may be closer than you think.
           </p>
           <p className="mt-3 text-tw-red font-bold uppercase text-sm">Search. Compare. Choose. Connect.</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <ButtonLink href="#directory" variant="red" size="md" arrow>
               Find a Professional
             </ButtonLink>

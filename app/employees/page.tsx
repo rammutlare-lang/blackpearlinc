@@ -668,9 +668,9 @@ export default function EmployeesPage() {
       </section>
 
       <section className="bg-tw-black py-16">
-        <div className="container-page text-center">
+        <div className="container-page">
           <h2 className="text-2xl md:text-3xl font-black text-white">Your Workplace. Your Rights. Your Next Step.</h2>
-          <p className="mt-3 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-3 text-white/60 max-w-2xl">
             Whether you are facing dismissal, discipline, harassment,
             retrenchment, a grievance, a salary dispute or another workplace
             challenge, Black Pearl is here to help you find the information
@@ -679,7 +679,7 @@ export default function EmployeesPage() {
           <p className="mt-3 text-tw-red font-bold uppercase text-sm">
             Understand. Prepare. Connect. Move Forward.
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <ButtonLink href="/book" variant="red" size="lg" arrow>
               Get Help Now
             </ButtonLink>
@@ -694,9 +694,9 @@ export default function EmployeesPage() {
       </section>
 
       <section className="bg-tw-charcoal py-14">
-        <div className="container-page text-center">
+        <div className="container-page">
           <p className="font-black uppercase text-white">Black Pearl</p>
-          <p className="mt-2 text-white/60 max-w-xl mx-auto">
+          <p className="mt-2 text-white/60 max-w-xl">
             Professional workplace expertise, made accessible. Helping
             employees navigate workplace challenges with greater clarity,
             confidence and access to appropriate professional support.

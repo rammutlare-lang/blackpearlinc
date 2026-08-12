@@ -595,14 +595,14 @@ export default async function EmployersPage() {
       </section>
 
       <section className="bg-tw-black py-16">
-        <div className="container-page text-center">
+        <div className="container-page">
           <p className="eyebrow">Business Resources</p>
           <h2 className="mt-2 text-2xl font-black text-white">Free Tools for Employers</h2>
-          <p className="mt-3 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-3 text-white/60 max-w-2xl">
             Before booking professional support, explore the Black Pearl
             Workplace Resource Centre.
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
+          <div className="mt-6 flex flex-wrap items-center gap-2 max-w-2xl">
             {employerResourceLinks.map((r) => (
               <span key={r} className="text-xs font-bold uppercase bg-white/5 border border-white/20 rounded-full px-3 py-1.5 text-white/70">
                 {r}
@@ -670,9 +670,9 @@ export default async function EmployersPage() {
       </section>
 
       <section className="bg-tw-black py-14">
-        <div className="container-page text-center">
+        <div className="container-page">
           <p className="font-black uppercase text-white">Black Pearl for Business</p>
-          <p className="mt-2 text-white/60 max-w-xl mx-auto">
+          <p className="mt-2 text-white/60 max-w-xl">
             Professional workplace expertise. Flexible support. Better employee
             relations. Built for South African businesses.
           </p>
