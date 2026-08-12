@@ -7,6 +7,8 @@ const schema = z.object({
   name: z.string().min(1),
   role: z.string().min(1),
   bio: z.string().min(1),
+  expertise: z.string().optional(),
+  linkedIn: z.string().optional(),
 });
 
 export async function POST(req: Request) {

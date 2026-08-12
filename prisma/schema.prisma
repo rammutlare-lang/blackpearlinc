@@ -173,13 +173,14 @@ model Resource {
 }
 
 model TeamMember {
-  id       String  @id @default(cuid())
-  name     String
-  role     String
-  bio      String
-  photoUrl String?
-  linkedIn String?
-  order    Int     @default(0)
+  id         String  @id @default(cuid())
+  name       String
+  role       String
+  bio        String
+  expertise  String? // comma-separated tags, e.g. "Employee Relations,Labour Relations,HR,Compliance"
+  photoUrl   String?
+  linkedIn   String?
+  order      Int     @default(0)
 }
 
 model SiteStat {

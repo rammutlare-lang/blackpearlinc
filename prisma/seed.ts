@@ -345,12 +345,10 @@ const professionals = [
   },
 ];
 
-const teamMembers = [
-  { name: "Thabo Mokoena", role: "Founder & CEO", bio: "Labour law expert with over 15 years of experience in dispute resolution and employee relations.", order: 0 },
-  { name: "Nomsa Dlamini", role: "Head of Operations", bio: "Operations strategist passionate about building systems that deliver exceptional client experiences.", order: 1 },
-  { name: "Sipho Nkosi", role: "Head of Legal & Compliance", bio: "Ensures our platform meets the highest legal, ethical and regulatory standards.", order: 2 },
-  { name: "Lerato Kgosana", role: "Client Relations Lead", bio: "Dedicated to our community and committed to supporting every client with care.", order: 3 },
-];
+// No placeholder leadership profiles are seeded — the About page's
+// Leadership section only appears once genuine, verifiable people are
+// added via /admin/team. Never seed fictional names/credentials here.
+const placeholderTeamNames = ["Thabo Mokoena", "Nomsa Dlamini", "Sipho Nkosi", "Lerato Kgosana"];
 
 const resources = [
   {
@@ -573,10 +571,9 @@ async function main() {
     }
   }
 
-  for (const t of teamMembers) {
-    const existing = await prisma.teamMember.findFirst({ where: { name: t.name } });
-    if (!existing) await prisma.teamMember.create({ data: t });
-  }
+  // Remove any previously-seeded placeholder leadership profiles — these were
+  // fictional demo names and should never be presented as real people.
+  await prisma.teamMember.deleteMany({ where: { name: { in: placeholderTeamNames } } });
 
   // Legacy placeholder homepage stats removed — SiteStat rows are no longer
   // seeded. Add real figures later via /admin/site-stats once they exist.
